@@ -19,7 +19,7 @@ class CreateGamesTable extends Migration
             $table->integer('awayId');
             $table->integer('stadiumId');
             $table->integer('typeId');
-            $table->date('day');
+            $table->date('date');
             $table->time('time');
             $table->integer('goalsHome');
             $table->integer('goalsAway');
