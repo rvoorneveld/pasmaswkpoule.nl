@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function predictions()
+    {
+        return $this->hasMany(Predictions::class, 'userId', 'id');
+    }
+
+    public function score()
+    {
+        return $this->hasOne(UserScore::class, 'userId', 'id');
+    }
+
 }
