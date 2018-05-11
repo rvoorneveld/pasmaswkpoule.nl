@@ -17,4 +17,14 @@ class Game extends Model
         return $this->hasOne(Country::class, 'id', 'awayId');
     }
 
+    public function gameType()
+    {
+        return $this->hasOne(Gametypes::class, 'id', 'typeId');
+    }
+
+    public function stadium()
+    {
+        return $this->hasOne(Stadium::class, 'id', 'stadiumId');
+    }
+
 }
