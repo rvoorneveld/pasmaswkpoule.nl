@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form name="deleteUserForm" method="post" action="/admin/stadiums/{{ $stadium->id }}">
+    <form name="deleteStadiumsForm" method="post" action="/admin/stadiums/{{ $stadium->id }}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
         <div class="form-group">
