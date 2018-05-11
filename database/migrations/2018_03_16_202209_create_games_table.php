@@ -21,10 +21,10 @@ class CreateGamesTable extends Migration
             $table->integer('typeId');
             $table->date('date');
             $table->time('time');
-            $table->integer('goalsHome');
-            $table->integer('goalsAway');
-            $table->integer('cardsYellow');
-            $table->integer('cardsRed');
+            $table->integer('goalsHome')->nullable();
+            $table->integer('goalsAway')->nullable();
+            $table->integer('cardsYellow')->nullable();
+            $table->integer('cardsRed')->nullable();
             $table->timestamps();
         });
     }
