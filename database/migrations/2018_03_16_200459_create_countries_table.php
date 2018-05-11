@@ -18,13 +18,13 @@ class CreateCountriesTable extends Migration
             $table->string('name');
             $table->string('flag');
             $table->string('poule');
-            $table->integer('played');
-            $table->integer('won');
-            $table->integer('draw');
-            $table->integer('loss');
-            $table->integer('points');
-            $table->integer('for');
-            $table->integer('against');
+            $table->integer('played')->nullable();
+            $table->integer('won')->nullable();
+            $table->integer('draw')->nullable();
+            $table->integer('loss')->nullable();
+            $table->integer('points')->nullable();
+            $table->integer('for')->nullable();
+            $table->integer('against')->nullable();
             $table->timestamps();
         });
     }
