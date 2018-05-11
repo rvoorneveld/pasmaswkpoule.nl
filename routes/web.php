@@ -34,3 +34,6 @@ Route::get('/admin/users/{id}/delete', 'Admin\UsersController@delete')->middlewa
 
 Route::resource('/admin/stadiums', 'Admin\StadiumsController')->middleware('admin');
 Route::get('/admin/stadiums/{id}/delete', 'Admin\StadiumsController@delete')->middleware('admin');
+
+Route::resource('/admin/countries', 'Admin\CountriesController')->middleware('admin');
+Route::get('/admin/countries/{id}/delete', 'Admin\CountriesController@delete')->middleware('admin');
