@@ -20,3 +20,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+jQuery('#flash-overlay-modal').modal();
+jQuery('div.alert').not('.alert-important').delay(3000).fadeOut(350);

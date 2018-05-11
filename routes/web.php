@@ -18,7 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ranking', 'RankingController@index')->name('ranking');
+Route::get('/stadions', 'StadiumController@index')->name('stadium');
+Route::get('/spelregels', 'RulesController@index')->name('rules');
 
-Auth::routes();
+Route::resource('games', 'GamesController');
+Route::post('/games/save', 'GamesController@save');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/games', 'Admin\GamesController@index')->name('admin.games')->middleware('admin');
+Route::post('/admin/games/save', 'Admin\GamesController@save')->middleware('admin');
+Route::post('/admin/games/store', 'Admin\GamesController@store')->middleware('admin');
+
+Route::resource('/admin/users', 'Admin\UsersController')->middleware('admin');
+Route::get('/admin/users/{id}/delete', 'Admin\UsersController@delete')->middleware('admin');
+
+Route::resource('/admin/stadiums', 'Admin\StadiumsController')->middleware('admin');
+Route::get('/admin/stadiums/{id}/delete', 'Admin\StadiumsController@delete')->middleware('admin');

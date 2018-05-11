@@ -1,3 +1,6 @@
+<?php
+    $user = Auth::user();
+?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -17,7 +20,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +30,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link{{ true === Request::is('games') ? ' active' : '' }}" href="/games">Programma & Uitslagen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ true === Request::is('ranking') ? ' active' : '' }}" href="/ranking">Ranglijst</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ true === Request::is('stadions') ? ' active' : '' }}" href="/stadions">Stadions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ true === Request::is('spelregels') ? ' active' : '' }}" href="/spelregels">Spelregels</a>
+                        </li>
+                        @if(false === empty($user) && 20 === $user->isAdmin)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle{{ true === Request::is('admin/*') ? ' active' : '' }}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Beheer</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item{{ true === Request::is('admin/games') ? ' active' : '' }}" href="/admin/games">Programma & Uitslagen</a>
+                                    <a class="dropdown-item{{ true === Request::is('admin/users') ? ' active' : '' }}" href="/admin/users">Gebruikers</a>
+                                    <a class="dropdown-item{{ true === Request::is('admin/stadiums') ? ' active' : '' }}" href="/admin/stadiums">Stadions</a>
+                                </div>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -39,10 +63,13 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ $user->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/profile">
+                                        Profiel
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -59,9 +86,12 @@
                 </div>
             </div>
         </nav>
+        @include('flash::message')
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                @yield('content')
+            </div>
         </main>
     </div>
 
