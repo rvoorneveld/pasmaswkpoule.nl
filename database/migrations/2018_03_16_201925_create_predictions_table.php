@@ -21,6 +21,7 @@ class CreatePredictionsTable extends Migration
             $table->integer('goalsAway');
             $table->integer('cardsRed');
             $table->integer('cardsYellow');
+            $table->tinyInteger('points')->nullable();
             $table->timestamps();
         });
     }
