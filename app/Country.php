@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
 
-    public function matches()
+    public function games()
     {
-        return $this->hasMany(Matches::class);
+        return $this->hasMany(Game::class);
     }
 
 }
