@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
             UsersScoreTableSeeder::class,
-            GamesTableSeeder::class,
             GameTypesTableSeeder::class,
             CountriesTableSeeder::class,
+            CitiesTableSeeder::class,
             StadiumsTableSeeder::class,
+            GamesTableSeeder::class,
         ]);
     }
 

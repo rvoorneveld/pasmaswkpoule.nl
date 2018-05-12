@@ -13,31 +13,62 @@ class GamesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('games')->insert([
-            'homeId' => 1,
-            'awayId' => 2,
-            'stadiumId' => 1,
-            'goalsHome' => null,
-            'goalsAway' => null,
-            'cardsYellow' => null,
-            'cardsRed' => null,
-            'typeId' => 1,
-            'date' => '2018-05-15',
-            'time' => '20:00:00',
-        ]);
+        $countries = [
+            'Rusland',
+            'Saudi-Arabië',
+            'Egypte',
+            'Uruguay',
+            'Portugal',
+            'Spanje',
+            'Marokko',
+            'Iran',
+            'Frankrijk',
+            'Australië',
+            'Peru',
+            'Denemarken',
+            'Argentinië',
+            'IJsland',
+            'Kroatië',
+            'Nigeria',
+            'Brazilië',
+            'Zwitserland',
+            'Costa Rica',
+            'Servië',
+            'Duitsland',
+            'Mexico',
+            'Zweden',
+            'Zuid-Korea',
+            'België',
+            'Panama',
+            'Tunesië',
+            'Engeland',
+        ];
 
-        DB::table('games')->insert([
-            'homeId' => 3,
-            'awayId' => 4,
-            'stadiumId' => 2,
-            'goalsHome' => null,
-            'goalsAway' => null,
-            'cardsYellow' => null,
-            'cardsRed' => null,
-            'typeId' => 1,
-            'date' => '2018-05-16',
-            'time' => '20:30:00',
-        ]);
+//        $games = [
+//            1 => [
+//                [
+//                    'awayId' => ,
+//                    'stadiumId' => ,
+//                    'date' => ,
+//                    'type' => ,
+//                ],
+//            ]
+//        ]
+
+        foreach ($countries as $key => $name) {
+            DB::table('games')->insert([
+                'homeId' => 1,
+                'awayId' => 2,
+                'stadiumId' => 1,
+                'goalsHome' => null,
+                'goalsAway' => null,
+                'cardsYellow' => null,
+                'cardsRed' => null,
+                'typeId' => 1,
+                'date' => '2018-05-15',
+                'time' => '20:00:00',
+            ]);
+        }
     }
 
 }
