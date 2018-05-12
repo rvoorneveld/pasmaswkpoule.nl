@@ -26,7 +26,6 @@ class HandleCountriesRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'flag' => 'required',
             'poule' => 'required|numeric',
         ];
     }
