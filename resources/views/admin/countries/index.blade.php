@@ -10,7 +10,6 @@
             <thead>
                 <tr>
                     <th>Naam</th>
-                    <th>Vlag</th>
                     <th>Poule</th>
                     <th align="right"></th>
                 </tr>
@@ -18,8 +17,7 @@
             <tbody>
             @foreach($countries as $country)
                 <tr>
-                    <td>{{ $country->name }}</td>
-                    <td>{{ $country->flag }}</td>
+                    <td><img class="flag" src="/images/flags/{{ $country->flag }}" alt="{{ $country->name }}" title="{{ $country->name }}" /> {{ html_entity_decode($country->name) }}</td>
                     <td>{{ $country->poule }}</td>
                     <td align="right">
                         <div class="btn-group btn-group-sm" role="group" aria-label="buttons">
