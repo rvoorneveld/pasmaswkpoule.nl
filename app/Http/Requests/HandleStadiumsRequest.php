@@ -12,7 +12,7 @@ class HandleStadiumsRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return false === empty($user = Auth::user()) && 20 === $user->isAdmin;
     }
@@ -22,7 +22,7 @@ class HandleStadiumsRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required',
