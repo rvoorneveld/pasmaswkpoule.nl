@@ -56,6 +56,12 @@ class CountriesTableSeeder extends Seeder
                 'Tunesië' => 'Tunisia',
                 'Engeland' => 'United-Kingdom',
             ],
+            'H' => [
+                'Polen' => 'Poland',
+                'Senegal' => 'Senegal',
+                'Colombia' => 'Colombia',
+                'Japan' => 'Japan',
+            ],
         ];
 
         foreach (range('A', 'H') as $poule) {
