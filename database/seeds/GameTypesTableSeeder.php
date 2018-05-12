@@ -13,25 +13,18 @@ class GameTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('gameTypes')->insert([
-            'name' => 'Voorronden',
-        ]);
-
-        DB::table('gameTypes')->insert([
-            'name' => '8e finales',
-        ]);
-
-        DB::table('gameTypes')->insert([
-            'name' => '4e finales',
-        ]);
-
-        DB::table('gameTypes')->insert([
-            'name' => 'Halve finale',
-        ]);
-
-        DB::table('gameTypes')->insert([
-            'name' => 'Finale',
-        ]);
+        foreach ([
+            'Voorronden',
+            '1/8',
+            '1/4',
+            '1/2',
+            '3',
+            'FINALE'
+        ] as $name) {
+            DB::table('gameTypes')->insert([
+                'name' => $name,
+            ]);
+        }
     }
 
 }
