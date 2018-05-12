@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Country;
-use Illuminate\Http\Request;
+use App\Http\Requests\HandleCountriesRequest;
 use App\Http\Controllers\Controller;
 
 class CountriesController extends Controller
@@ -27,18 +27,20 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.countries.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\HandleCountriesRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HandleCountriesRequest $request)
     {
-        //
+        DB::table('countries')->insert($request->validated());
+        flash('Land met succes toegevoegd')->success();
+        return redirect('admin/countries');
     }
 
     /**
@@ -60,19 +62,32 @@ class CountriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.countries.edit', [
+            'country' => Country::find($id),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\HandleCountriesRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HandleCountriesRequest $request, $id)
     {
-        //
+        DB::table('countries')
+            ->where('id', $id)
+            ->update($request->validated());
+        flash('Land met succes opgeslagen')->success();
+        return redirect('admin/countries');
+    }
+
+    public function delete($id)
+    {
+        return view('admin.countries.delete', [
+            'country' => Country::find($id),
+        ]);
     }
 
     /**
@@ -83,6 +98,10 @@ class CountriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('countries')
+            ->where('id', $id)
+            ->delete();
+        flash('Land met succes verwijderd')->success();
+        return redirect('admin/stadiums');
     }
 }
