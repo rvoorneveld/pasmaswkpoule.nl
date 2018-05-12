@@ -31,7 +31,7 @@
                         <td>{{$game->date}}</td>
                         <td>{{$game->time}}</td>
                         <td style="text-align: right;">
-                            {{$game->homeCountry->name}}
+                            {{ html_entity_decode($game->homeCountry->name) }}
                             <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" />
                         </td>
                         <td><input name="{{$game->id}}[goalsHome]" type="text" class="form-control" placeholder="0" value="{{$goalsHome}}"></td>
@@ -39,7 +39,7 @@
                         <td><input name="{{$game->id}}[goalsAway]" type="text" class="form-control" placeholder="0" value="{{$goalsAway}}"></td>
                         <td>
                             <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" />
-                            {{$game->awayCountry->name}}
+                            {{ html_entity_decode($game->awayCountry->name) }}
                         </td>
                         <td>
                             <select name="{{$game->id}}[cardsYellow]">

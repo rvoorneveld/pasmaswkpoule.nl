@@ -14,11 +14,11 @@
                     @foreach($todaysGames as $todaysGame)
                         <tr>
                             <th scope="row">{{ $todaysGame->time}}</th>
-                            <td>{{$todaysGame->homeCountry->name}}</td>
+                            <td>{{ html_entity_decode($todaysGame->homeCountry->name) }}</td>
                             <td><img class="flag" src="/images/flags/{{$todaysGame->homeCountry->flag}}" /></td>
                             <td>-</td>
                             <td><img class="flag" src="/images/flags/{{$todaysGame->awayCountry->flag}}" /></td>
-                            <td>{{$todaysGame->awayCountry->name}}</td>
+                            <td>{{ html_entity_decode($todaysGame->awayCountry->name) }}</td>
                         </tr>
                     @endforeach
                     </tbody>
