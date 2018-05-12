@@ -14,7 +14,7 @@ class HandleStadiumsRequest extends FormRequest
      */
     public function authorize()
     {
-        return 20 === Auth::user()->isAdmin;
+        return false === empty($user = Auth::user()) && 20 === $user->isAdmin;
     }
 
     /**
