@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Stadion bewerken</h1>
     <form name="editStadiumsForm" method="post" action="/admin/stadiums/{{ $stadium->id }}">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}

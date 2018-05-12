@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Stadion verwijderen</h1>
     <form name="deleteStadiumsForm" method="post" action="/admin/stadiums/{{ $stadium->id }}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Stadion toevoegen</h1>
     <form name="createStadiumsForm" method="post" action="/admin/stadiums">
         {{ csrf_field() }}
         <div class="form-group">

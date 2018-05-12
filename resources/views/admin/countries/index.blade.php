@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="clearfix">
         <a class="btn btn-primary float-right" href="/admin/countries/create">Land toevoegen</a>
-        SECURE - Landen
+        Landen
     </h1>
     @if (false === empty($countries))
         <table class="table table-sm table-hover">

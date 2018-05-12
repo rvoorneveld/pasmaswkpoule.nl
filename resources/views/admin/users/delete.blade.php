@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Gebruiker verwijderen</h1>
     <form name="deleteUserForm" method="post" action="/admin/users/{{ $user->id }}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}

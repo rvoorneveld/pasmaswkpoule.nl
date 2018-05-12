@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>SECURE - Users</h1>
+    <h1>Gebruikers</h1>
     @if (false === empty($users))
         <table class="table table-sm table-hover">
             <thead>

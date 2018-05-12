@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="clearfix">
         <a class="btn btn-primary float-right" href="/admin/stadiums/create">Stadion toevoegen</a>
-        SECURE - Stadions
+        Stadions
     </h1>
     @if (false === empty($stadiums))
         <table class="table table-sm table-hover">

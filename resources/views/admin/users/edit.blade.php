@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Gebruiker bewerken</h1>
     <form name="editUserForm" method="post" action="/admin/users/{{ $user->id }}">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}

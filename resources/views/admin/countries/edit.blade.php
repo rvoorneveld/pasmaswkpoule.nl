@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Land bewerken</h1>
     <form name="editCountriesForm" method="post" action="/admin/countries/{{ $country->id }}">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>SECURE - Programma & Uitslagen</h1>
+    <h1>Programma & Uitslagen</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

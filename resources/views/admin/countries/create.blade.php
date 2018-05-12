@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>Land toevoegen</h1>
     <form name="createCountriesForm" method="post" action="/admin/countries">
         {{ csrf_field() }}
         <div class="form-group">
