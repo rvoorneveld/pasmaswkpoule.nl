@@ -10,6 +10,8 @@
             <thead>
                 <tr>
                     <th>Naam</th>
+                    <th>Vlag</th>
+                    <th>Poule</th>
                     <th align="right"></th>
                 </tr>
             </thead>
@@ -17,6 +19,8 @@
             @foreach($countries as $country)
                 <tr>
                     <td>{{ $country->name }}</td>
+                    <td>{{ $country->flag }}</td>
+                    <td>{{ $country->poule }}</td>
                     <td align="right">
                         <div class="btn-group btn-group-sm" role="group" aria-label="buttons">
                             <a href="/admin/countries/{{ $country->id }}/edit" class="btn btn-outline-secondary">bewerken</a>

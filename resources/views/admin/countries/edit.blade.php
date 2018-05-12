@@ -9,6 +9,14 @@
             <label for="name">Naam</label>
             <input name="name" type="text" class="form-control" id="name" value="{{ $country->name }}" required>
         </div>
+        <div class="form-group">
+            <label for="flag">Vlag</label>
+            <input name="flag" type="text" class="form-control" id="flag" value="{{ $country->flag }}" required>
+        </div>
+        <div class="form-group">
+            <label for="poule">Poule</label>
+            <input name="poule" type="text" class="form-control" id="poule" value="{{ $country->poule }}" required>
+        </div>
         <button type="submit" class="btn btn-primary">Opslaan</button>
         @if ($errors->any())
             <div class="form-group">
