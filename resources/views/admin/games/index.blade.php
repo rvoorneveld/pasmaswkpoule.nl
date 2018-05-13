@@ -56,7 +56,7 @@
                             @if(false === empty($countries))
                                 <select class="form-control" name="new[homeId]">
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        <option value="{{ $country->id }}">{{ html_entity_decode($country->name) }}</option>
                                     @endforeach
                                 </select>
                             @endif
@@ -66,7 +66,7 @@
                             @if(false === empty($countries))
                                 <select class="form-control" name="new[awayId]">
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        <option value="{{ $country->id }}">{{ html_entity_decode($country->name) }}</option>
                                     @endforeach
                                 </select>
                             @endif
@@ -155,7 +155,7 @@
                                             <option
                                                 value="{{ $country->id }}"
                                                 {{{ ($game->homeCountry->id === $country->id) ? 'selected' : '' }}}
-                                            >{{ $country->name }}</option>
+                                            >{{ html_entity_decode($country->name) }}</option>
                                         @endforeach
                                     </select>
                                 @endif
@@ -193,7 +193,7 @@
                                         <option
                                             value="{{ $country->id }}"
                                             {{{ ($game->awayCountry->id === $country->id) ? 'selected' : '' }}}
-                                        >{{ $country->name }}</option>
+                                        >{{ html_entity_decode($country->name) }}</option>
                                     @endforeach
                                     </select>
                                 @endif
