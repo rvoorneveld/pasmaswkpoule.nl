@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Game;
@@ -85,6 +86,12 @@ class GamesController extends Controller
             DB::table('games')
                 ->where('id', $gameId)
                 ->update($game);
+            if (true === isset($input['updateScores']) && 'yes' === $input['updateScores']) {
+                Artisan::call('points:update', [
+                    'gameId' => $gameId,
+                ]);
+            }
+
         }
         flash('Wedstijd(en) met succes opgeslagen')->success();
         return redirect('admin/games');
