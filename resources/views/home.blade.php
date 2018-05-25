@@ -17,14 +17,14 @@
             @if (false === empty($todaysGames))
                 <table class="table">
                     <tbody>
-                    @foreach($todaysGames as $todaysGame)
+                    @foreach($todaysGames as $game)
                         <tr>
-                            <th scope="row">{{ $todaysGame->time}}</th>
-                            <td>{{ html_entity_decode($todaysGame->homeCountry->name) }}</td>
-                            <td><img class="flag" src="/images/flags/{{$todaysGame->homeCountry->flag}}" /></td>
+                            <th scope="row">{{ $game->time}}</th>
+                            <td>{{ html_entity_decode($game->homeCountry->name) }}</td>
+                            <td><img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /></td>
                             <td>-</td>
-                            <td><img class="flag" src="/images/flags/{{$todaysGame->awayCountry->flag}}" /></td>
-                            <td>{{ html_entity_decode($todaysGame->awayCountry->name) }}</td>
+                            <td><img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /></td>
+                            <td>{{ html_entity_decode($game->awayCountry->name) }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -34,22 +34,28 @@
             @endif
         </div>
 
-        @if (false === empty($feed))
-                <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                    <div class="my-3 p-3">
-                        <h2 class="display-5">Laatste nieuws</h2>
-                        <div class="list-group">
-                            @foreach($feed['items'] as $item)
-                                <a href="{{ $item->get_link() }}" target="_blank" class="list-group-item list-group-item-action">
-                                    <span class="font-weight-light">{{ $item->get_date('j M') }}</span>
-                                    {{ $item->get_title() }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+            <div class="my-3 py-3">
+                <h2 class="display-5">Eerstvolgende wedstrijden</h2>
             </div>
-        @endif
+            @if (false === empty($upcommingGames))
+                <table class="table">
+                    <tbody>
+                    @foreach($upcommingGames as $game)
+                        <tr>
+                            <th scope="row">{{ $game->time}}</th>
+                            <td>{{ html_entity_decode($game->homeCountry->name) }}</td>
+                            <td><img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /></td>
+                            <td>-</td>
+                            <td><img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /></td>
+                            <td>{{ html_entity_decode($game->awayCountry->name) }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
+        </div>
+
     </div>
 </div>
 @endsection
