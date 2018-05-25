@@ -72,7 +72,7 @@ class GamesController extends Controller
             $validator = Validator::make($game, [
                 'typeId' => 'required',
                 'stadiumId' => 'required',
-                'date' => 'required|dateformat:yyyy-mm-dd',
+                'date' => 'required',
                 'time' => 'required',
                 'homeId' => 'required',
                 'awayId' => 'required',
