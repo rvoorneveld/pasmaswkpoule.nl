@@ -1,6 +1,6 @@
 <?php
 
-namespace App;namespace App;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,11 @@ class Stadium extends Model
     public function matches()
     {
         return $this->hasMany(Games::class, 'stadiumId', 'id');
+    }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id','cityId');
     }
 
 }
