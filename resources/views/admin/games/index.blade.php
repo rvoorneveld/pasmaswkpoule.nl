@@ -230,6 +230,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                Update scores: <input type="checkbox" name="updateScores" value="yes">
                 <input class="btn btn-primary" type="submit" name="submit" value="Opslaan">
             </fieldset>
         </form>
