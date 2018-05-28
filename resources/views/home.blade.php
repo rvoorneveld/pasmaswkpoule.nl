@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Welkom {{ Auth::user()->name }}</h1>
-@if (true === $showFillPredictionsBox)
+@if (true === $showFillPredictionsAlert)
     <div class="alert alert-warning alert-important" role="alert">
         Vergeet niet om je <a class="alert-link" href="/games">voorspellingen</a> in te vullen!
     </div>

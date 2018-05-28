@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('home', [
             'todaysGames' => Game::where('date', Carbon::today()->toDateString())->get()->all(),
             'upcommingGames' => Game::limit(5)->get(),
-            'showFillPredictionsBox' => (Predictions::where('userId', Auth::id())->count() == Game::count()),
+            'showFillPredictionsAlert' => Predictions::where('userId', Auth::id())->count() !== Game::count(),
 //            'feed' => $this->getFeedData(),
         ]);
     }
