@@ -11,8 +11,8 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($ranking as $rank)
-                <tr>
+            @foreach($ranking as $i => $rank)
+                <tr{{{ $i <= 3 ? ' class=table-success' : '' }}}>
                     <td>{{ $rank->user->name }}</td>
                     <td>{{ $rank->points }}</td>
                 </tr>
