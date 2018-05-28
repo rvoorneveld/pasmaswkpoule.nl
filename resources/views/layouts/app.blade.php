@@ -89,6 +89,8 @@
         </nav>
         @include('flash::message')
 
+        @yield('carousel')
+
         <main class="py-4">
             <div class="container">
                 @yield('content')
