@@ -14,7 +14,7 @@ class calculateUserPointByGameCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'points:update {gameId}';
+    protected $signature = 'points:bygame {gameId}';
 
     /**
      * The console command description.
