@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Country;
 use App\Game;
 use App\Predictions;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +30,12 @@ class GamesController extends Controller
     public function index()
     {
         return view('games.index', [
-            'games' => Game::all(),
+            'poules' => DB::table('countries')->select(['poule'])->distinct()->get(),
+            'games' => Game::all()->groupBy(function ($game) {
+                return $game->homeCountry->poule;
+            }),
             'userPredictions' => $this->getUserPredictions(),
+
         ]);
     }
 
