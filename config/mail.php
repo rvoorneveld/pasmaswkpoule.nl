@@ -5,8 +5,8 @@ return [
     'host' => 'smtp.mailtrap.io',
     'port' => 2525,
     'from' => [
-        'address' => 'from@example.com',
-        'name' => 'Example',
+        'address' => 'wkpoule@webathletes.com',
+        'name' => 'WK Poule',
     ],
     'username' => 'e86e627d406489',
     'password' => '98e61393e25a07',
