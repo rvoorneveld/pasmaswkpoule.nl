@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\TotalUserPointsCalculated;
 use Illuminate\Support\Facades\DB;
 use App\Predictions;
 use Illuminate\Console\Command;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class calculateUserPointTotal extends Command
 {
@@ -40,11 +42,20 @@ class calculateUserPointTotal extends Command
      */
     public function handle()
     {
-        foreach(Predictions::select(DB::raw('SUM(points) as total, userId'))->groupBy('userId')->get() as $userPoints) {
+        $predictions = Predictions::select([
+            DB::raw('SUM(points) as total'),
+            'users.name',
+            'users.email',
+        ])->join('users', 'users.id', '=', 'predictions.userId')
+          ->groupBy('predictions.userId', 'users.name', 'users.email')
+          ->get();
+        foreach($predictions as $userPoints) {
             DB::table('users_score')
                 ->where('userId', $id = $userPoints['userId'])
                 ->update(['points' => $total = $userPoints['total']]);
             $this->info("Awarded a total of {$total} point(s) to user id: {$id}.");
+
+            Mail::to($userPoints)->send(new TotalUserPointsCalculated($userPoints));
         }
     }
 }
