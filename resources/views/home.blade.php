@@ -1,3 +1,7 @@
+@php
+    $carbon = new \Carbon\Carbon();
+@endphp
+
 @extends('layouts.app')
 
 @section('carousel')
@@ -32,22 +36,24 @@
 
 @endif
 <div class="row justify-content-center">
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">Wedstrijden vandaag</h2>
-            </div>
+    <div class="d-md-flex flex-md-equal w-100">
+        <div class="mr-md-4 p-4 bg-dark text-center text-white overflow-hidden">
+            <h2 class="pb-3">Wedstrijden vandaag</h2>
             @if (false === empty($todaysGames))
                 <table class="table">
                     <tbody>
                     @foreach($todaysGames as $game)
                         <tr>
-                            <th scope="row">{{ $game->time}}</th>
-                            <td>{{ html_entity_decode($game->homeCountry->name) }}</td>
-                            <td><img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /></td>
+                            <td>{{ $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->format('H:i') }}</td>
+                            <td>
+                                <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
+                                {{ html_entity_decode($game->homeCountry->name) }}
+                            </td>
                             <td>-</td>
-                            <td><img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /></td>
-                            <td>{{ html_entity_decode($game->awayCountry->name) }}</td>
+                            <td>
+                                <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
+                                {{ html_entity_decode($game->awayCountry->name) }}
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -57,21 +63,26 @@
             @endif
         </div>
 
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">Eerstvolgende wedstrijden</h2>
-            </div>
+        <div class="mr-md-4 p-4 bg-dark text-center text-white">
+            <h2 class="pb-3">Komende wedstrijden</h2>
             @if (false === empty($upcommingGames))
                 <table class="table">
                     <tbody>
                     @foreach($upcommingGames as $game)
                         <tr>
-                            <th scope="row">{{ $game->time}}</th>
-                            <td>{{ html_entity_decode($game->homeCountry->name) }}</td>
-                            <td><img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /></td>
+                            <td>
+                                {{{ ($date = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d') }}}<br />
+                                {{ $date->format('M') }}
+                            </td>
+                            <td>
+                                <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
+                                {{ html_entity_decode($game->homeCountry->name) }}
+                            </td>
                             <td>-</td>
-                            <td><img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /></td>
-                            <td>{{ html_entity_decode($game->awayCountry->name) }}</td>
+                            <td>
+                                <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
+                                {{ html_entity_decode($game->awayCountry->name) }}
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
