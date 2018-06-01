@@ -8,7 +8,6 @@ use App\Country;
 use App\Game;
 use App\Predictions;
 use Illuminate\Support\Facades\Auth;
-use Laracasts\Flash\Flash;
 
 class GamesController extends Controller
 {
