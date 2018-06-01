@@ -10392,6 +10392,11 @@ a.text-dark:focus {
   height: 19px;
 }
 
+.carousel-item {
+  background-size: cover;
+  height: 50vh;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
