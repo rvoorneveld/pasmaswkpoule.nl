@@ -1,6 +1,7 @@
 @php
     $carbon = new \Carbon\Carbon();
 @endphp
+
 @extends('layouts.app')
 
 @section('content')
