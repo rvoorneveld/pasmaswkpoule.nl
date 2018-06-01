@@ -8,15 +8,9 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="/images/carousel/lnvbl5jmxp7cpshbii1x.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/images/carousel/nmkfkdjgbakfzul9ckb5.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/images/carousel/whxuhveznu9jtq3h5byt.jpg" alt="Second slide">
-            </div>
+            <div class="carousel-item active" style="background-image: url('/images/carousel/lnvbl5jmxp7cpshbii1x.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('/images/carousel/nmkfkdjgbakfzul9ckb5.jpg');"></div>
+            <div class="carousel-item" style="background-image: url('/images/carousel/whxuhveznu9jtq3h5byt.jpg');"></div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
