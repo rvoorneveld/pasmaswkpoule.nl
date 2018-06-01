@@ -88,14 +88,10 @@
             </div>
         </nav>
         @include('flash::message')
-
         @yield('carousel')
-
-        <main class="py-4">
-            <div class="container">
-                @yield('content')
-            </div>
-        </main>
+        <div class="container mt-4">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
