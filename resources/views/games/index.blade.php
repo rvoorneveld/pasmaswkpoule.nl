@@ -8,11 +8,11 @@
     <h1>Programma & Uitslagen</h1>
 
     @if (false === empty($poules))
+        <form method="post" name="saveGamesForm" action="/games/save">
             <div class="row">
         @foreach($poules as $poule)
             <div class="col-sm text-center">
                 <h2 class="mt-4">Poule {{ $strPoule = $poule->poule }}</h2>
-                <form method="post" name="saveGamesForm" action="/games/save">
                     {{ csrf_field()}}
                     @if (true === isset($games[$strPoule]))
                         <table class="table table-borderless table-striped">
@@ -62,8 +62,8 @@
                         </table>
                     @endif
                 </div>
-            </form>
         @endforeach
-        </div>
+            </div>
+        </form>
     @endif
 @endsection
