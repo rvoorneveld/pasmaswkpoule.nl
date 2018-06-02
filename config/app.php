@@ -146,7 +146,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        willvincent\Feeds\FeedsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -161,6 +160,8 @@ return [
         App\Providers\EventServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        Awjudd\FeedReader\FeedReaderServiceProvider::class,
 
     ],
 
@@ -190,7 +191,6 @@ return [
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
-        'Feeds' => willvincent\Feeds\Facades\FeedsFacade::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Flash' => Laracasts\Flash\FlashServiceProvider::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
@@ -212,6 +212,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'FeedReader' => Awjudd\FeedReader\Facade::class,
     ],
 
 ];
