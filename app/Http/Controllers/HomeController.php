@@ -7,7 +7,7 @@ use App\Game;
 use App\Predictions;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Feeds;
+use Awjudd\FeedReader\FeedReader;
 
 class HomeController extends Controller
 {
@@ -33,17 +33,8 @@ class HomeController extends Controller
             'todaysGames' => Game::where('date', Carbon::today()->toDateString())->get()->all(),
             'upcommingGames' => Game::limit(5)->get(),
             'showFillPredictionsAlert' => Predictions::where('userId', Auth::id())->count() !== Game::count(),
-//            'feed' => $this->getFeedData(),
+            'feed' => (new FeedReader())->read('https://www.voetbalkrant.com/nl/rss/nieuws/competities/wk-2018')->get_items(),
         ]);
-    }
-
-    protected function getFeedData(): array
-    {
-        return [
-            'title' => ($feed = Feeds::make('https://www.voetbalkrant.com/nl/rss/nieuws'))->get_title(),
-            'permalink' => $feed->get_permalink(),
-            'items' => $feed->get_items(),
-        ];
     }
 
 }
