@@ -80,6 +80,7 @@ class GamesController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
+
             DB::table('games')
                 ->where('id', $gameId)
                 ->update($game);
@@ -92,6 +93,7 @@ class GamesController extends Controller
         if (true === $booUpdateScores) {
             Artisan::call('points:total');
         }
+
         flash('Wedstijd(en) met succes opgeslagen')->success();
         return redirect('admin/games');
     }
