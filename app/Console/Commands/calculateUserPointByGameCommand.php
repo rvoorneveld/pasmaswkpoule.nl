@@ -108,7 +108,6 @@ class calculateUserPointByGameCommand extends Command
 
                 $this->info("---");
             }
-            $this->call('points:total');
             $this->info('Done');
             return;
         }
