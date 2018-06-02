@@ -33,11 +33,14 @@
     <div class="alert alert-warning alert-important" role="alert">
         Vergeet niet om je <a class="alert-link" href="/games">voorspellingen</a> in te vullen!
     </div>
-
+@else
+    <div class="alert alert-success alert-important" role="alert">
+        Je hebt alle voorspellingen ingevuld!
+    </div>
 @endif
 <div class="row justify-content-center">
     <div class="d-md-flex flex-md-equal w-100">
-        <div class="mr-md-4 p-4 bg-dark text-center text-white overflow-hidden">
+        <div class="w-50 ml-md-3 mr-md-4 p-4 bg-dark text-center text-white overflow-hidden">
             <h2 class="pb-3">Wedstrijden vandaag</h2>
             @if (false === empty($todaysGames))
                 <table class="table">
@@ -63,7 +66,7 @@
             @endif
         </div>
 
-        <div class="mr-md-4 p-4 bg-dark text-center text-white">
+        <div class="w-50 mr-md-4 p-4 bg-dark text-center text-white">
             <h2 class="pb-3">Komende wedstrijden</h2>
             @if (false === empty($upcommingGames))
                 <table class="table">
@@ -90,6 +93,17 @@
             @endif
         </div>
 
+    @if (false === empty($feed))
+        <div class="w-50 p-4">
+            <h2 class="pb-3 text-center">Laatste nieuws</h2>
+            <div class="list-group">
+            @foreach($feed as $key => $item)
+                @if ($key > 4) @php continue; @endphp @endif
+                <a target="_blank" href="{{ $item->get_link() }}" class="list-group-item list-group-item-action">{{ $item->get_title() }}</a>
+            @endforeach
+            </div>
+        </div>
+    @endif
     </div>
 </div>
 @endsection
