@@ -86,12 +86,14 @@ class GamesController extends Controller
             DB::table('games')
                 ->where('id', $gameId)
                 ->update($game);
-            if (true === isset($input['updateScores']) && 'yes' === $input['updateScores']) {
-                Artisan::call('points:update', [
+            if (true === ($booUpdateScores = (isset($input['updateScores']) && 'yes' === $input['updateScores']))) {
+                Artisan::call('points:bygame', [
                     'gameId' => $gameId,
                 ]);
             }
-
+        }
+        if (true === $booUpdateScores) {
+            Artisan::call('points:total');
         }
         flash('Wedstijd(en) met succes opgeslagen')->success();
         return redirect('admin/games');
