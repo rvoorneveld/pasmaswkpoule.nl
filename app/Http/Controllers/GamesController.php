@@ -135,9 +135,6 @@ class GamesController extends Controller
 
     private function getUserPredictions(): array
     {
-        if (null !== $this->userPredictions) {
-            return $this->userPredictions;
-        }
         return ($this->userPredictions = $this->predictions
             ->where('userId', Auth::id())
             ->get()
