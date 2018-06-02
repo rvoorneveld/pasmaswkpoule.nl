@@ -15,12 +15,12 @@ class UsersScoreTableSeeder extends Seeder
     {
         DB::table('users_score')->insert([
             'userId' => 1,
-            'points' => 125,
+            'points' => NULL,
         ]);
 
         DB::table('users_score')->insert([
             'userId' => 2,
-            'points' => 350,
+            'points' => NULL,
         ]);
     }
 
