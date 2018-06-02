@@ -20,36 +20,40 @@
                         @foreach ($games[$strPoule] as $game)
                             @php
                                 $gamePrediction = $userPredictions[$game->id] ?? false;
-                                $goalsHome = $gamePrediction['goalsHome'] ?? 0;
-                                $goalsAway = $gamePrediction['goalsAway'] ?? 0;
-                                $cardsYellow = $gamePrediction['goalsHome'] ?? 0;
-                                $cardsRed = $gamePrediction['goalsHome'] ?? 0;
+                                $goalsHome = $gamePrediction['goalsHome'] ?? '';
+                                $goalsAway = $gamePrediction['goalsAway'] ?? '';
+                                $cardsYellow = $gamePrediction['cardsYellow'] ?? '';
+                                $cardsRed = $gamePrediction['cardsRed'] ?? '';
                             @endphp
                             <tr>
                                 <td>
+                                    @if (null !== $intPoints = $gamePrediction['points'])
+                                        {{ $intPoints }}
+                                        @else
                                     {{{ ($date = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d') }}}<br />
                                     {{ $date->format('M') }}
+                                        @endif
                                 </td>
                                 <td>
                                     <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
                                     {{ html_entity_decode($game->homeCountry->name) }}
                                 </td>
                                 <td width="60">
-                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px;" name="{{$game->id}}[goalsHome]" type="text" class="form-control" placeholder="0" value="{{ $goalsHome }}">
+                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px;" name="{{$game->id}}[goalsHome]" type="text" class="form-control" value="{{ $goalsHome }}">
                                 </td>
                                 <td width="25">-</td>
                                 <td width="60">
-                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px;" name="{{$game->id}}[goalsAway]" type="text" class="form-control" placeholder="0" value="{{ $goalsAway }}">
+                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px;" name="{{$game->id}}[goalsAway]" type="text" class="form-control" value="{{ $goalsAway }}">
                                 </td>
                                 <td>
                                     <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
                                     {{ html_entity_decode($game->awayCountry->name) }}
                                 </td>
                                 <td width="60">
-                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px; background: yellow;" name="{{$game->id}}[cardsYellow]" type="text" class="form-control" placeholder="0" value="{{ $cardsYellow }}">
+                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px; background: yellow;" name="{{$game->id}}[cardsYellow]" type="text" class="form-control" value="{{ $cardsYellow }}">
                                 </td>
                                 <td width="60">
-                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px; background: red;" name="{{$game->id}}[cardsRed]" type="text" class="form-control" placeholder="0" value="{{ $cardsRed }}">
+                                    <input maxlength="1" style="max-width:50px; text-align:center; font-size:18px; background: red;" name="{{$game->id}}[cardsRed]" type="text" class="form-control" value="{{ $cardsRed }}">
                                 </td>
                             </tr>
                         @endforeach
