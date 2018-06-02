@@ -1,3 +1,7 @@
+@php
+    $carbon = new \Carbon\Carbon();
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -103,6 +107,7 @@
                                     <select
                                         class="form-control"
                                         name="{{ $game->id }}[typeId]"
+                                        disabled
                                     >
                                         @foreach($types as $type)
                                             <option
@@ -116,8 +121,9 @@
                             <td>
                                 @if(false === empty($stadiums))
                                     <select
-                                            class="form-control"
-                                            name="{{ $game->id }}[stadiumId]"
+                                        class="form-control"
+                                        name="{{ $game->id }}[stadiumId]"
+                                        disabled
                                     >
                                         @foreach($stadiums as $stadium)
                                             <option
@@ -133,7 +139,9 @@
                                     name="{{ $game->id }}[date]"
                                     type="text"
                                     class="form-control"
-                                    value="{{ $game->date }}"
+                                    value="{{ ($dateFromTimeString = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d M') }}"
+                                    disabled
+                                    style="width:75px;"
                                 >
                             </td>
                             <td>
@@ -141,8 +149,9 @@
                                     name="{{ $game->id }}[time]"
                                     type="text"
                                     class="form-control"
-                                    value="{{ $game->time }}"
-                                    style="width:100px;"
+                                    value="{{ $dateFromTimeString->format('H:i') }}"
+                                    disabled
+                                    style="width:65px;"
                                 >
                             </td>
                             <td style="text-align: right;">
@@ -150,6 +159,7 @@
                                     <select
                                         class="form-control"
                                         name="{{ $game->id }}[homeId]"
+                                        disabled
                                     >
                                         @foreach($countries as $country)
                                             <option
@@ -167,7 +177,7 @@
                                     class="form-control"
                                     placeholder="0"
                                     value="{{ $game->goalsHome }}"
-                                    {{ $disabled = (true === $game->inFuture) ? 'disabled' : '' }}
+                                    {{ $disabled = true === $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->isFuture() ? ' disabled' : '' }}
                                     style="width:50px;"
                                 >
                             </td>
@@ -188,6 +198,7 @@
                                     <select
                                         class="form-control"
                                         name="{{ $game->id }}[awayId]"
+                                        disabled
                                     >
                                     @foreach($countries as $country)
                                         <option
