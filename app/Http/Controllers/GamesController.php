@@ -8,6 +8,7 @@ use App\Country;
 use App\Game;
 use App\Predictions;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class GamesController extends Controller
 {
@@ -54,6 +55,18 @@ class GamesController extends Controller
             if (false === is_numeric($gameId)) {
                 continue;
             }
+
+            if (true === ($validator = Validator::make($gamePrediction, [
+                'goalsHome' => 'numeric',
+                'goalsAway' => 'numeric',
+                'cardsYellow' => 'numeric',
+                'cardsRed' => 'numeric',
+            ]))->fails()) {
+                return redirect('games')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             $strMethod = (false === array_key_exists($gameId, $this->getUserPredictions())) ? 'store' : 'update';
             $this->$strMethod($gamePrediction, $gameId);
         }

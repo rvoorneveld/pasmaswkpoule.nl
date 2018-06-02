@@ -69,16 +69,13 @@ class GamesController extends Controller
             if (false === is_numeric($gameId)) {
                 continue;
             }
-            $validator = Validator::make($game, [
-                'typeId' => 'required',
-                'stadiumId' => 'required',
-                'date' => 'required',
-                'time' => 'required',
-                'homeId' => 'required',
-                'awayId' => 'required',
-            ]);
 
-            if (true === $validator->fails()) {
+            if (true === ($validator = Validator::make($game, [
+                'goalsHome' => 'numeric',
+                'goalsAway' => 'numeric',
+                'cardsYellow' => 'numeric',
+                'cardsRed' => 'numeric',
+            ]))->fails()) {
                 return redirect('admin/games')
                     ->withErrors($validator)
                     ->withInput();
