@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\DB;
 use App\Mail\RegistrationComplete;
 use App\Mail\Welcome;
 use App\User;
@@ -71,6 +72,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'isAdmin' => 10,
+        ]);
+
+        DB::table('users_score')->insert([
+            'userId' => $user->id,
         ]);
 
         Mail::to($user)->send(new RegistrationComplete($user));
