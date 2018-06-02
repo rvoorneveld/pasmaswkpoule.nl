@@ -49,6 +49,7 @@ class calculateUserPointTotal extends Command
         ])->join('users', 'users.id', '=', 'predictions.userId')
           ->groupBy('predictions.userId', 'users.name', 'users.email')
           ->get();
+
         foreach($predictions as $userPoints) {
             DB::table('users_score')
                 ->where('userId', $id = $userPoints['userId'])
