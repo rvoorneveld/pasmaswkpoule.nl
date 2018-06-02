@@ -90,7 +90,8 @@ class GamesController extends Controller
                 ]);
             }
         }
-        if (true === $booUpdateScores) {
+
+        if (true === ($booUpdateScores ?? false)) {
             Artisan::call('points:total');
         }
 
