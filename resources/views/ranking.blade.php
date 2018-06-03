@@ -6,15 +6,25 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="row">Naam</th>
-                    <th scope="row">Score</th>
+                    <th>Plaats</th>
+                    <th>Naam</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody>
             @foreach($ranking as $i => $rank)
-                <tr{{{ $i <= 3 ? ' class=table-success' : '' }}}>
+                <tr>
+                    <td>{{ $intRank = ($i + 1) }}</td>
                     <td>{{ $rank->user->name }}</td>
-                    <td>{{ $rank->points }}</td>
+                    <td>
+                        @if ($intRank <= 6)
+                            <h{{ $intRank }}>
+                                <span class="badge badge-light">{{ $rank->points }}</span>
+                            </h{{ $intRank }}>
+                        @else
+                            {{ $rank->points }}
+                        @endif
+                    </td>
                 </tr>
             @endforeach
             </tbody>
