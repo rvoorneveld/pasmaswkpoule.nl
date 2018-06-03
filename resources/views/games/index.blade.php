@@ -83,6 +83,31 @@
                                         {{ $disabled }}
                                     >
                                 </td>
+                                @if (null !== $intPoints = $gamePrediction['points'])
+                                    <td width="66">
+                                        <div>
+                                            <span class="badge badge-light">{{ $game->goalsHome }}</span>
+                                            -
+                                            <span class="badge badge-light">{{ $game->goalsAway }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="badge badge-light" style="background: yellow;">{{ $game->cardsYellow }}</span>
+                                            -
+                                            <span class="badge badge-light" style="background: red;">{{ $game->cardsRed }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h1>
+                                            <span class="badge badge-light">
+                                                {{ $intPoints }}
+                                            </span>
+                                        </h1>
+                                    </td>
+                                @else
+                                    <td colspan="2">
+
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                             <tr>
