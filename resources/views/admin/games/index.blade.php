@@ -139,7 +139,7 @@
                                     name="{{ $game->id }}[date]"
                                     type="text"
                                     class="form-control"
-                                    value="{{ ($dateFromTimeString = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d M') }}"
+                                    value="{{ $game->formattedDate }}"
                                     disabled
                                     style="width:75px;"
                                 >
@@ -149,7 +149,7 @@
                                     name="{{ $game->id }}[time]"
                                     type="text"
                                     class="form-control"
-                                    value="{{ $dateFromTimeString->format('H:i') }}"
+                                    value="{{ $game->formattedTime }}"
                                     disabled
                                     style="width:65px;"
                                 >
@@ -177,7 +177,7 @@
                                     class="form-control"
                                     placeholder="0"
                                     value="{{ $game->goalsHome }}"
-                                    {{ $disabled = true === $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->isFuture() ? ' disabled' : '' }}
+                                    {{ $disabled = true === $game->inFuture ? ' disabled' : '' }}
                                     style="width:50px;"
                                 >
                             </td>
