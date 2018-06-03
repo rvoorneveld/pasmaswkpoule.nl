@@ -52,7 +52,7 @@ class GamesController extends Controller
     public function save(Request $request)
     {
         foreach ($input = $request->all() as $gameId => $gamePrediction) {
-            if (false === is_numeric($gameId)) {
+            if (false === is_numeric($gameId) || true === empty(array_filter($gamePrediction))) {
                 continue;
             }
 
