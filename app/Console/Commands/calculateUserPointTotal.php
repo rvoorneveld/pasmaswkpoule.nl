@@ -44,16 +44,18 @@ class calculateUserPointTotal extends Command
     {
         $predictions = Predictions::select([
             DB::raw('SUM(points) as total'),
+            'users.id',
             'users.name',
             'users.email',
         ])->join('users', 'users.id', '=', 'predictions.userId')
-          ->groupBy('predictions.userId', 'users.name', 'users.email')
+          ->groupBy('predictions.userId', 'users.name', 'users.email', 'users.id')
           ->get();
 
         foreach($predictions as $userPoints) {
             DB::table('users_score')
-                ->where('userId', $id = $userPoints['userId'])
+                ->where('userId', $id = $userPoints['id'])
                 ->update(['points' => $total = $userPoints['total']]);
+
             $this->info("Awarded a total of {$total} point(s) to user id: {$id}.");
 
             Mail::to($userPoints)->send(new TotalUserPointsCalculated($userPoints));
