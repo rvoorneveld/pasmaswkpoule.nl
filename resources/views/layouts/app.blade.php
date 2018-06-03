@@ -31,7 +31,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link{{ true === Request::is('games') ? ' active' : '' }}" href="/games">Programma & Uitslagen</a>
+                            <a class="nav-link{{ true === ($booGamesRequest = Request::is('games')) ? ' active' : '' }}" href="/games">Programma & Uitslagen</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link{{ true === Request::is('ranking') ? ' active' : '' }}" href="/ranking">Ranglijst</a>
@@ -89,7 +89,7 @@
         </nav>
         @include('flash::message')
         @yield('carousel')
-        <div class="container mt-4">
+        <div class="container{{ true === $booGamesRequest ? '-fluid' : '' }} mt-4">
             @yield('content')
         </div>
     </div>
