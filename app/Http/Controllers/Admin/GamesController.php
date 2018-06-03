@@ -28,10 +28,13 @@ class GamesController extends Controller
      */
     public function index()
     {
+        $carbon = new Carbon();
         return view('admin.games.index', [
             'countries' => Country::orderBy('name')->get(),
-            'games' => Game::all()->map(function($item) {
-                $item['inFuture'] = (new Carbon("{$item->date} {$item->time}"))->isFuture();
+            'games' => Game::orderBy('date', 'ASC')->orderBy('time', 'ASC')->get()->map(function($item) use ($carbon) {
+                $item['inFuture'] = ($date = $carbon->setTimeFromTimeString("{$item->date} {$item->time}"))->isFuture();
+                $item['formattedDate'] = $date->format('d M');
+                $item['formattedTime'] = $date->format('H:i');
                 return $item;
             }),
             'stadiums' => Stadium::all(),
