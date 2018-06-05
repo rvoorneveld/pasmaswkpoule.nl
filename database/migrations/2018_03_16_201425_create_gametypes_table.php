@@ -13,7 +13,7 @@ class CreateGametypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('game_types', function (Blueprint $table) {
+        Schema::create('gametypes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateGametypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_types');
+        Schema::dropIfExists('gametypes');
     }
 }
