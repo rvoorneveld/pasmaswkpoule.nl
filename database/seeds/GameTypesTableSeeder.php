@@ -21,7 +21,7 @@ class GameTypesTableSeeder extends Seeder
             '3',
             'FINALE'
         ] as $name) {
-            DB::table('gameTypes')->insert([
+            DB::table('gametypes')->insert([
                 'name' => $name,
             ]);
         }
