@@ -15,8 +15,8 @@ class CreatePredictionsTable extends Migration
     {
         Schema::create('predictions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
-            $table->integer('gameId');
+            $table->integer('userId')->index();
+            $table->integer('gameId')->index();
             $table->integer('goalsHome');
             $table->integer('goalsAway');
             $table->integer('cardsRed');

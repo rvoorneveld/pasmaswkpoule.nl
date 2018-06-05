@@ -15,7 +15,7 @@ class CreateStadiumsTable extends Migration
     {
         Schema::create('stadiums', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('cityId')->unsigned();
+            $table->tinyInteger('cityId')->unsigned()->index();
             $table->string('name');
             $table->string('image');
             $table->string('image_caption');

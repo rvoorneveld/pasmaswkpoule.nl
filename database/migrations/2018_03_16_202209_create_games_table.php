@@ -15,10 +15,10 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('homeId');
-            $table->integer('awayId');
-            $table->integer('stadiumId');
-            $table->integer('typeId');
+            $table->integer('homeId')->index();
+            $table->integer('awayId')->index();
+            $table->integer('stadiumId')->index();
+            $table->integer('typeId')->index();
             $table->date('date');
             $table->time('time');
             $table->integer('goalsHome')->nullable();
