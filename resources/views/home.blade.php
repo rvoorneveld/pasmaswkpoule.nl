@@ -38,63 +38,60 @@
         Je hebt alle voorspellingen ingevuld!
     </div>
 @endif
-<div class="row justify-content-center">
-    <div class="d-md-flex flex-md-equal w-100">
-        <div class="w-50 ml-md-3 mr-md-4 p-4 bg-dark text-center text-white overflow-hidden">
-            <h2 class="pb-3">Wedstrijden vandaag</h2>
-            @if (false === empty($todaysGames))
-                <table class="table">
-                    <tbody>
-                    @foreach($todaysGames as $game)
-                        <tr>
-                            <td>{{ $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->format('H:i') }}</td>
-                            <td>
-                                <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
-                                {{ html_entity_decode($game->homeCountry->name) }}
-                            </td>
-                            <td>-</td>
-                            <td>
-                                <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
-                                {{ html_entity_decode($game->awayCountry->name) }}
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            @else
-                <p>Geen wedstrijden vandaag.</p>
-            @endif
-        </div>
+<div class="row">
+    <div class="col-sm-12 col-lg-6 col-xl-3 p-4 bg-dark text-center text-white">
+        <h2 class="pb-3">Wedstrijden vandaag</h2>
+        @if (false === empty($todaysGames))
+            <table class="table">
+                <tbody>
+                @foreach($todaysGames as $game)
+                    <tr>
+                        <td>{{ $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->format('H:i') }}</td>
+                        <td>
+                            <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
+                            {{ html_entity_decode($game->homeCountry->name) }}
+                        </td>
+                        <td>
+                            <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
+                            {{ html_entity_decode($game->awayCountry->name) }}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Geen wedstrijden vandaag.</p>
+        @endif
+    </div>
 
-        <div class="w-50 mr-md-4 p-4 bg-dark text-center text-white">
-            <h2 class="pb-3">Komende wedstrijden</h2>
-            @if (false === empty($upcommingGames))
-                <table class="table">
-                    <tbody>
-                    @foreach($upcommingGames as $game)
-                        <tr>
-                            <td>
-                                {{{ ($date = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d') }}}<br />
-                                {{ $date->format('M') }}
-                            </td>
-                            <td>
-                                <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
-                                {{ html_entity_decode($game->homeCountry->name) }}
-                            </td>
-                            <td>-</td>
-                            <td>
-                                <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
-                                {{ html_entity_decode($game->awayCountry->name) }}
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            @endif
-        </div>
+    <div class="col-sm-12 col-lg-6 col-xl-3 p-4 bg-dark text-center text-white">
+        <h2 class="pb-3">Komende wedstrijden</h2>
+        @if (false === empty($upcommingGames))
+            <table class="table">
+                <tbody>
+                @foreach($upcommingGames as $game)
+                    <tr>
+                        <td>
+                            {{{ ($date = $carbon->setTimeFromTimeString("{$game->date} {$game->time}"))->format('d') }}}<br />
+                            {{ $date->format('M') }}
+                        </td>
+                        <td>
+                            <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
+                            {{ html_entity_decode($game->homeCountry->name) }}
+                        </td>
+                        <td>
+                            <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
+                            {{ html_entity_decode($game->awayCountry->name) }}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
 
     @if (false === empty($feed))
-        <div class="w-50 p-4">
+        <div class="col-sm-12 col-lg-6 col-xl-3 p-4">
             <h2 class="pb-3 text-center">Laatste nieuws</h2>
             <div class="list-group">
             @foreach($feed as $key => $item)
@@ -104,6 +101,5 @@
             </div>
         </div>
     @endif
-    </div>
 </div>
 @endsection
