@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->integer('awayId')->index();
             $table->integer('stadiumId')->index();
             $table->integer('typeId')->index();
+            $table->char('poule', 1)->index();
             $table->date('date');
             $table->time('time');
             $table->integer('goalsHome')->nullable();
