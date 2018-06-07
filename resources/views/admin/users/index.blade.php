@@ -9,6 +9,7 @@
                     <th>Naam</th>
                     <th>Email</th>
                     <th>Admin</th>
+                    <th>Paid</th>
                     <th>Score</th>
                     <th align="right"></th>
                 </tr>
@@ -26,10 +27,8 @@
                     </td>
                     <td>{{{ $user->score->points ?? 0 }}}</td>
                     <td align="right">
-                        <div class="btn-group btn-group-sm" role="group" aria-label="buttons">
-                            <a href="/admin/users/{{ $user->id }}/edit" class="btn btn-outline-secondary">bewerken</a>
-                            <a href="/admin/users/{{ $user->id }}/delete" class="btn btn-outline-danger">verwijderen</a>
-                        </div>
+                        <a href="/admin/users/{{ $user->id }}/edit">bewerken</a>
+                        <a href="/admin/users/{{ $user->id }}/delete">verwijderen</a>
                     </td>
                 </tr>
             @endforeach
