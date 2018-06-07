@@ -19,7 +19,10 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <button type="button" class="btn btn-sm {{ ($isAdmin = 20 === $user->isAdmin) ? 'btn-outline-warning' : 'btn-outline-success' }}" disabled>{{ true === $isAdmin ? 'Administrator' : 'Gebruiker' }}</button>
+                        <button type="button" class="btn btn-sm btn-info" disabled>{{ 20 === $user->isAdmin ? 'Administrator' : 'Gebruiker' }}</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-sm {{ ($hasPaid = null !== $user->hasPaid) ? 'btn-success' : 'btn-warning' }}" disabled>{{ true === $hasPaid ? "Betaald op {$user->hasPaid}" : 'Niet betaald' }}</button>
                     </td>
                     <td>{{{ $user->score->points ?? 0 }}}</td>
                     <td align="right">

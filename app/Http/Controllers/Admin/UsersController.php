@@ -76,9 +76,12 @@ class UsersController extends Controller
      */
     public function update(UpdateUserRequest $request, $id)
     {
+        $hasPaid = '20' === ($arrData = $request->validated())['hasPaid'] ? now() : null;
+        $arrData['hasPaid'] = $hasPaid;
+
         DB::table('users')
             ->where('id', $id)
-            ->update($request->validated());
+            ->update($arrData);
         flash('Gebruiker met succes opgeslagen')->success();
         return redirect('admin/users');
     }

@@ -20,6 +20,13 @@
                 <option value="20"{{ (20 === $user->isAdmin) ? ' selected' : '' }}>Administrator</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="hasPaid">Paid?</label>
+            <select name="hasPaid" class="form-control" id="hasPaid" required>
+                <option value="20"{{ (null !== $user->hasPaid) ? ' selected' : '' }}>Betaald</option>
+                <option value="10"{{ (null === $user->hasPaid) ? ' selected' : '' }}>Niet betaald</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Opslaan</button>
         @if ($errors->any())
         <div class="form-group">

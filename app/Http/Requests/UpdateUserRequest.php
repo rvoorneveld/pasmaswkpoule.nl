@@ -29,6 +29,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'isAdmin' => 'required|numeric',
+            'hasPaid' => 'required|numeric',
         ];
     }
 
