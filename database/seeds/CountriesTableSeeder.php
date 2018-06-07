@@ -14,69 +14,44 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countries = [
-            'A' => [
-                'Rusland' => 'Russia',
-                'Saudi-Arabië' => 'Saudi-Arabia',
-                'Egypte' => 'Egypt',
-                'Uruguay' => 'Uruguay',
-            ],
-            'B' => [
-                'Portugal' => 'Portugal',
-                'Spanje' => 'Spain',
-                'Marokko' => 'Morocco',
-                'Iran' => 'Iran',
-            ],
-            'C' => [
-                'Frankrijk' => 'France',
-                'Australië' => 'Australia',
-                'Peru' => 'Peru',
-                'Denemarken' => 'Denmark',
-            ],
-            'D' => [
-                'Argentinië' => 'Argentina',
-                'IJsland' => 'Iceland',
-                'Kroatië' => 'Croatia',
-                'Nigeria' => 'Nigeria',
-            ],
-            'E' => [
-                'Brazilië' => 'Brazil',
-                'Zwitserland' => 'Austria',
-                'Costa Rica' => 'Costa-Rica',
-                'Servië' => 'Serbia',
-            ],
-            'F' => [
-                'Duitsland' => 'Germany',
-                'Mexico' => 'Mexico',
-                'Zweden' => 'Sweden',
-                'Zuid-Korea' => 'Korea-South',
-            ],
-            'G' => [
-                'België' => 'Belgium',
-                'Panama' => 'Panama',
-                'Tunesië' => 'Tunisia',
-                'Engeland' => 'United-Kingdom',
-            ],
-            'H' => [
-                'Polen' => 'Poland',
-                'Senegal' => 'Senegal',
-                'Colombia' => 'Colombia',
-                'Japan' => 'Japan',
-            ],
+            'Rusland' => 'Russia',
+            'Saudi-Arabië' => 'Saudi-Arabia',
+            'Egypte' => 'Egypt',
+            'Uruguay' => 'Uruguay',
+            'Portugal' => 'Portugal',
+            'Spanje' => 'Spain',
+            'Marokko' => 'Morocco',
+            'Iran' => 'Iran',
+            'Frankrijk' => 'France',
+            'Australië' => 'Australia',
+            'Peru' => 'Peru',
+            'Denemarken' => 'Denmark',
+            'Argentinië' => 'Argentina',
+            'IJsland' => 'Iceland',
+            'Kroatië' => 'Croatia',
+            'Nigeria' => 'Nigeria',
+            'Brazilië' => 'Brazil',
+            'Zwitserland' => 'Austria',
+            'Costa Rica' => 'Costa-Rica',
+            'Servië' => 'Serbia',
+            'Duitsland' => 'Germany',
+            'Mexico' => 'Mexico',
+            'Zweden' => 'Sweden',
+            'Zuid-Korea' => 'Korea-South',
+            'België' => 'Belgium',
+            'Panama' => 'Panama',
+            'Tunesië' => 'Tunisia',
+            'Engeland' => 'United-Kingdom',
+            'Polen' => 'Poland',
+            'Senegal' => 'Senegal',
+            'Colombia' => 'Colombia',
+            'Japan' => 'Japan',
         ];
-
-        foreach (range('A', 'H') as $poule) {
-            if (
-                true === array_key_exists($poule, $countries) &&
-                true === is_array($countries[$poule])
-            ) {
-                foreach ($countries[$poule] as $name => $flag) {
-                    DB::table('countries')->insert([
-                        'name' => htmlentities($name),
-                        'flag' => "{$flag}.png",
-                        'poule' => $poule,
-                    ]);
-                }
-            }
+        foreach ($countries as $name => $flag) {
+            DB::table('countries')->insert([
+                'name' => htmlentities($name),
+                'flag' => "{$flag}.png",
+            ]);
         }
     }
 

@@ -30,12 +30,10 @@ class GamesController extends Controller
     public function index()
     {
         return view('games.index', [
-            'poules' => DB::table('countries')->select(['poule'])->distinct()->get(),
-            'games' => Game::all()->groupBy(function ($game) {
-                return $game->homeCountry->poule;
+            'gamesByPoule' => Game::all()->groupBy(function ($game) {
+                return $game->poule;
             }),
             'userPredictions' => $this->getUserPredictions(),
-
         ]);
     }
 
