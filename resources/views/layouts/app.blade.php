@@ -46,9 +46,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle{{ true === Request::is('admin/*') ? ' active' : '' }}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Beheer</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item{{ true === Request::is('admin/games') ? ' active' : '' }}" href="/admin/games">Programma & Uitslagen</a>
-                                    <a class="dropdown-item{{ true === Request::is('admin/countries') ? ' active' : '' }}" href="/admin/countries">Landen</a>
-                                    <a class="dropdown-item{{ true === Request::is('admin/stadiums') ? ' active' : '' }}" href="/admin/stadiums">Stadions</a>
+                                    <a class="dropdown-item{{ true === Request::is('admin/games') ? ' active' : '' }}" href="/admin/games">Wedstrijden</a>
                                     <a class="dropdown-item{{ true === Request::is('admin/users') ? ' active' : '' }}" href="/admin/users">Gebruikers</a>
                                 </div>
                             </li>
