@@ -12,7 +12,7 @@
             {{ csrf_field() }}
             <div class="row">
                 @foreach($gamesByPoule as $poule => $games)
-                    <div class="col-lg-12 col-xl-6 text-center">
+                    <div class="col-lg-12 col-xl-6 text-center px-0 px-md-3">
                         <h2 class="mt-4">Poule {{ $poule }}</h2>
                         @if (false === empty($games))
                             <table class="table table-borderless table-striped">
@@ -28,26 +28,27 @@
                                         $cardsRed = $gamePrediction['cardsRed'] ?? '';
                                     @endphp
                                     <tr>
-                                        <td>
+                                        <td class="px-0 px-md-1">
                                             {{ $date->format('d') }}<br />
                                             {{ $date->format('M') }}
                                         </td>
-                                        <td>
-                                            <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
-                                            {{ html_entity_decode($game->homeCountry->name) }}
+                                        <td class="px-0 px-md-1">
+                                            <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" />
+                                            <div class="d-md-none text-uppercase">{{ $game->homeCountry->code }}</div>
+                                            <div class="d-none d-md-block">{{ html_entity_decode($game->homeCountry->name) }}</div>
                                         </td>
-                                        <td>
+                                        <td width="60">
                                             <input
-                                                    maxlength="1"
-                                                    style="max-width:50px; text-align:center; font-size:18px;"
-                                                    name="{{$game->id}}[goalsHome]"
-                                                    type="text"
-                                                    class="form-control"
-                                                    value="{{ $goalsHome }}"{{ $disabled }}
+                                                maxlength="1"
+                                                style="max-width:50px; text-align:center; font-size:18px;"
+                                                name="{{$game->id}}[goalsHome]"
+                                                type="text"
+                                                class="form-control"
+                                                value="{{ $goalsHome }}"{{ $disabled }}
                                             >
                                         </td>
-                                        <td>-</td>
-                                        <td>
+                                        <td class="px-0 px-md-1">-</td>
+                                        <td width="60">
                                             <input
                                                 maxlength="1"
                                                 style="max-width:50px; text-align:center; font-size:18px;"
@@ -58,11 +59,12 @@
                                                 {{ $disabled }}
                                             >
                                         </td>
-                                        <td>
-                                            <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
-                                            {{ html_entity_decode($game->awayCountry->name) }}
+                                        <td class="px-0 px-md-1">
+                                            <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" />
+                                            <div class="d-md-none text-uppercase">{{ $game->awayCountry->code }}</div>
+                                            <div class="d-none d-md-block">{{ html_entity_decode($game->awayCountry->name) }}</div>
                                         </td>
-                                        <td>
+                                        <td width="60">
                                             <input
                                                 maxlength="1"
                                                 style="max-width:50px; text-align:center; font-size:18px; background: yellow;"
@@ -73,7 +75,7 @@
                                                 {{ $disabled }}
                                             >
                                         </td>
-                                        <td>
+                                        <td width="60">
                                             <input
                                                 maxlength="1"
                                                 style="max-width:50px; text-align:center; font-size:18px; background: red;"
@@ -85,27 +87,23 @@
                                             >
                                         </td>
                                         @if (null !== $intPoints = $gamePrediction['points'])
-                                            <td>
+                                            <td class="px-0 px-md-1">
                                                 <div>
-                                                    <span class="badge badge-light">{{ $game->goalsHome }}</span>
-                                                    -
-                                                    <span class="badge badge-light">{{ $game->goalsAway }}</span>
+                                                    <span class="badge badge-light">{{ $game->goalsHome }}</span>-<span class="badge badge-light">{{ $game->goalsAway }}</span>
                                                 </div>
                                                 <div>
-                                                    <span class="badge badge-light" style="background: yellow;">{{ $game->cardsYellow }}</span>
-                                                    -
-                                                    <span class="badge badge-light" style="background: red;">{{ $game->cardsRed }}</span>
+                                                    <span class="badge badge-light" style="background: yellow;">{{ $game->cardsYellow }}</span>-<span class="badge badge-light" style="background: red;">{{ $game->cardsRed }}</span>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <h1>
+                                            <td class="px-0 px-md-1">
+                                                <h2>
                                                     <span class="badge badge-light">
                                                         {{ $intPoints }}
                                                     </span>
-                                                </h1>
+                                                </h2>
                                             </td>
                                         @else
-                                            <td colspan="2">&nbsp;</td>
+                                            <td colspan="2" class="px-0 px-md-1">&nbsp;</td>
                                         @endif
                                     </tr>
                                 @endforeach
