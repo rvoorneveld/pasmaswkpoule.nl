@@ -39,7 +39,7 @@
     </div>
 @endif
 <div class="row">
-    <div class="col-sm-12 col-lg-6 col-xl-3 p-4 bg-dark text-center text-white">
+    <div class="col-sm-12 col-lg-6 col-xl-4 p-4 bg-dark text-center text-white">
         <h2 class="pb-3">Wedstrijden vandaag</h2>
         @if (false === empty($todaysGames))
             <table class="table">
@@ -64,7 +64,7 @@
         @endif
     </div>
 
-    <div class="col-sm-12 col-lg-6 col-xl-3 p-4 bg-dark text-center text-white">
+    <div class="col-sm-12 col-lg-6 col-xl-4 p-4 bg-dark text-center text-white">
         <h2 class="pb-3">Komende wedstrijden</h2>
         @if (false === empty($upcommingGames))
             <table class="table">
@@ -91,7 +91,7 @@
     </div>
 
     @if (false === empty($feed))
-        <div class="col-sm-12 col-lg-6 col-xl-3 p-4">
+        <div class="col-sm-12 col-lg-6 col-xl-4 p-4">
             <h2 class="pb-3 text-center">Laatste nieuws</h2>
             <div class="list-group">
             @foreach($feed as $key => $item)
