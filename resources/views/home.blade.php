@@ -31,7 +31,7 @@
 <h1>Welkom {{ Auth::user()->name }}</h1>
 @if (true === $showFillPredictionsAlert)
     <div class="alert alert-warning alert-important" role="alert">
-        Vergeet niet om je <a class="alert-link" href="/games">voorspellingen</a> in te vullen!
+        <a class="alert-link" href="/games">Vergeet niet om je voorspellingen in te vullen!</a>
     </div>
 @else
     <div class="alert alert-success alert-important" role="alert">
