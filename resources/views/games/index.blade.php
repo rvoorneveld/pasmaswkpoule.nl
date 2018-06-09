@@ -35,8 +35,8 @@
                                         </td>
                                         <td class="px-0 px-sm-1 px-md-2 px-lg-3">
                                             <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" />
-                                            <div class="d-md-none text-uppercase">{{ $game->homeCountry->code }}</div>
-                                            <div class="d-none d-md-block">{{ html_entity_decode($game->homeCountry->name) }}</div>
+                                            <div class="d-sm-none text-uppercase">{{ $game->homeCountry->code }}</div>
+                                            <div class="d-none d-sm-block">{{ html_entity_decode($game->homeCountry->name) }}</div>
                                         </td>
                                         <td class="px-0">
                                             <input
@@ -60,8 +60,8 @@
                                         </td>
                                         <td class="px-0 px-sm-1 px-md-2 px-lg-3">
                                             <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" />
-                                            <div class="d-md-none text-uppercase">{{ $game->awayCountry->code }}</div>
-                                            <div class="d-none d-md-block">{{ html_entity_decode($game->awayCountry->name) }}</div>
+                                            <div class="d-sm-none text-uppercase">{{ $game->awayCountry->code }}</div>
+                                            <div class="d-none d-sm-block">{{ html_entity_decode($game->awayCountry->name) }}</div>
                                         </td>
                                         <td class="px-0">
                                             <input
