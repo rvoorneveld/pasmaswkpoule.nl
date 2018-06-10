@@ -29,9 +29,15 @@
                                     @endphp
                                     <tr>
                                         <td class="px-1 px-sm-1 px-md-2 px-lg-3">
-                                            {{ $date->format('d') }}
-                                            <div class="d-sm-none">{{ $date->format('m') }}</div>
-                                            <div class="d-none d-sm-block">{{ $date->format('M') }}</div>
+
+                                            <div class="d-sm-none">
+                                                {{ $date->format('d') }}<br />
+                                                {{ $date->format('m') }}
+                                            </div>
+                                            <div class="d-none d-sm-block">
+                                                {{ $date->format('d') }} {{ $date->format('M') }}<br />
+                                                {{ $date->format('H:i') }}
+                                            </div>
                                         </td>
                                         <td class="px-0 px-sm-1 px-md-2 px-lg-3">
                                             <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" />
