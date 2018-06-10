@@ -26,8 +26,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'jordipasma@hotmail.com',
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
-            'isAdmin' => 10,
-            'hasPaid' => now(),
+            'isAdmin' => 20,
         ]);
     }
 
