@@ -7,6 +7,11 @@
 @section('content')
     <h1>Wedstrijden</h1>
 
+    <div class="alert alert-warning alert-important" role="alert">
+        Let op: Wanneer je een wedstrijd wilt opslaan dien je alle 4 de velden in te vulen.<br />
+        Uitslag thuis, uitslag uit, gele kaarten en rode kaarten.
+    </div>
+
     @if (false === empty($gamesByPoule))
         <form class="form-inline" method="post" name="saveGamesForm" action="/games/save">
             {{ csrf_field() }}
