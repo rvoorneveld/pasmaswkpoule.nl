@@ -15,6 +15,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @if (true === App::environment('production'))
+        @include ('analytics')
+    @endif
+
 </head>
 <body>
     <div id="app">
