@@ -61,8 +61,8 @@ class calculateUserPointByGameCommand extends Command
                         $prediction->goalsHome === $game->goalsHome &&
                         $prediction->goalsAway === $game->goalsAway
                     ):
-                        $this->info("Awarded 3 points to {$userName}. Winner + goals scored both teams correct");
-                        $points += 3;
+                        $this->info("Awarded 5 points to {$userName}. Winner + goals scored both teams correct");
+                        $points += 5;
                         break;
                     case ( // Winnaar goed
                         $prediction->goalsHome < $prediction->goalsAway &&
@@ -85,8 +85,8 @@ class calculateUserPointByGameCommand extends Command
                         $prediction->cardsRed === $game->cardsRed &&
                         $prediction->cardsYellow === $game->cardsYellow
                     ):
-                        $this->info("Awarded 3 points to {$userName}. Red cards + Yellow cards correct");
-                        $points += 3;
+                        $this->info("Awarded 5 points to {$userName}. Red cards + Yellow cards correct");
+                        $points += 5;
                         break;
                     case  $prediction->cardsRed === $game->cardsRed:
                         $this->info("Awarded 1 point to {$userName}. Red cards correct");
