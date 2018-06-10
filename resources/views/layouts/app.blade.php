@@ -47,6 +47,9 @@
                         <li class="nav-item">
                             <a class="nav-link{{ true === Request::is('spelregels') ? ' active' : '' }}" href="/spelregels">Spelregels</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mailto:wkpoule@webathletes.nl">Contact</a>
+                        </li>
                         @if(false === empty($user) && 20 === $user->isAdmin)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle{{ true === Request::is('admin/*') ? ' active' : '' }}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Beheer</a>
