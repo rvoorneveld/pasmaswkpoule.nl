@@ -207,8 +207,8 @@ class GamesTableSeeder extends Seeder
                     'date' => '2018-06-21',
                     'time' => '20:00',
                 ], [
-                    'homeId' => 14,
-                    'awayId' => 16,
+                    'homeId' => 16,
+                    'awayId' => 14,
                     'stadiumId' => 11,
                     'typeId' => 1,
                     'date' => '2018-06-22',
