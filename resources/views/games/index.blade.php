@@ -52,7 +52,7 @@
                                         <td class="px-0">
                                             <input
                                                 maxlength="1"
-                                                style="width:35px; text-align:center; font-size:18px; display:inline-block;"
+                                                style="width:35px; text-align:center; font-size:18px; display:inline-block; padding: 0.375rem"
                                                 name="{{$game->id}}[goalsHome]"
                                                 type="text"
                                                 class="form-control"
@@ -61,7 +61,7 @@
                                             -
                                             <input
                                                 maxlength="1"
-                                                style="width:35px; text-align:center; font-size:18px; display:inline-block;"
+                                                style="width:35px; text-align:center; font-size:18px; display:inline-block; padding: 0.375rem;"
                                                 name="{{$game->id}}[goalsAway]"
                                                 type="text"
                                                 class="form-control"
@@ -77,7 +77,7 @@
                                         <td class="px-0">
                                             <input
                                                 maxlength="1"
-                                                style="width:35px; text-align:center; font-size:18px; display: inline-block; background: yellow;"
+                                                style="width:35px; text-align:center; font-size:18px; display: inline-block; padding: 0.375rem; background: yellow;"
                                                 name="{{$game->id}}[cardsYellow]"
                                                 type="text"
                                                 class="form-control"
@@ -86,7 +86,7 @@
                                             >
                                             <input
                                                 maxlength="1"
-                                                style="width:35px; text-align:center; font-size:18px; display: inline-block; background: red;"
+                                                style="width:35px; text-align:center; font-size:18px; display: inline-block; padding: 0.375rem; background: red;"
                                                 name="{{$game->id}}[cardsRed]"
                                                 type="text"
                                                 class="form-control"
