@@ -5,26 +5,31 @@
 @extends('layouts.app')
 
 @section('carousel')
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    @if (false === empty($images))
+        @php
+            $totalImages = count($images);
+        @endphp
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        @for ($i = 0; $i < $totalImages; $i++)
+            <li data-target="#carouselIndicators" data-slide-to="{{ $i }}"{{ $i === 0 ? ' class="active"' : '' }}></li>
+        @endfor
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('/images/carousel/lnvbl5jmxp7cpshbii1x.jpg');"></div>
-            <div class="carousel-item" style="background-image: url('/images/carousel/nmkfkdjgbakfzul9ckb5.jpg');"></div>
-            <div class="carousel-item" style="background-image: url('/images/carousel/whxuhveznu9jtq3h5byt.jpg');"></div>
+            @foreach ($images as $key => $image)
+                <div class="carousel-item{{ $key === 0 ? ' active' : '' }}" style="background-image: url('/images/carousel/{{ $image->getFileName() }}');"></div>
+            @endforeach
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">Vorige</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">Volgende</span>
         </a>
     </div>
+    @endif
 @endsection
 
 @section('content')
