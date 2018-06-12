@@ -158,11 +158,12 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         Awjudd\FeedReader\FeedReaderServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
     ],
 
