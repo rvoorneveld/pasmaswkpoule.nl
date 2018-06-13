@@ -63,7 +63,7 @@ class sendFillPredictionsReminder extends Command
             Mail::to($userPrediction)->send(new sendPredictionsReminder($userPrediction));
             $totalRemindersSent++;
         }
-        $this->info("kerPrediction reminders sent: {$totalRemindersSent}");
+        $this->info("Prediction reminders sent: {$totalRemindersSent}");
     }
 
 }
