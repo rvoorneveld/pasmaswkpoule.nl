@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Country;
@@ -50,7 +51,10 @@ class GamesController extends Controller
     public function save(Request $request)
     {
         foreach ($input = $request->all() as $gameId => $gamePrediction) {
-            if (false === is_numeric($gameId) || true === empty(array_filter($gamePrediction))) {
+            if (false === is_numeric($gameId) ||
+                true === empty(array_filter($gamePrediction)) ||
+                true === $this->gameInPast($gameId)
+            ) {
                 continue;
             }
 
@@ -139,6 +143,11 @@ class GamesController extends Controller
             ->keyBy('gameId')
             ->toArray()
         );
+    }
+
+    private function gameInPast(int $id): bool
+    {
+        return (new Carbon())->setTimeFromTimeString(($game = Game::find($id))->date.' '.$game->time)->isPast();
     }
 
 }
