@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\sendPredictionsReminder;
+use App\Mail\SendPredictionsReminder;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -60,7 +60,7 @@ class sendFillPredictionsReminder extends Command
             ->havingRaw("COUNT(predictions.id) < {$totalGamesOnDate}")
             ->get() as $userPrediction
         ) {
-            Mail::to($userPrediction)->send(new sendPredictionsReminder($userPrediction));
+            Mail::to($userPrediction)->send(new SendPredictionsReminder($userPrediction));
             $totalRemindersSent++;
         }
         $this->info("Prediction reminders sent: {$totalRemindersSent}");
