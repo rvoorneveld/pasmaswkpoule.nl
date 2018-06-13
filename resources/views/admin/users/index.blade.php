@@ -6,6 +6,7 @@
         <table class="table table-sm table-hover">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Naam</th>
                     <th>Email</th>
                     <th>Admin</th>
@@ -17,6 +18,7 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
+                    <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
