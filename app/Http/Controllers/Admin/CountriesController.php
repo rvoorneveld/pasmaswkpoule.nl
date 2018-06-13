@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CountriesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -104,4 +105,5 @@ class CountriesController extends Controller
         flash('Land met succes verwijderd')->success();
         return redirect('admin/stadiums');
     }
+
 }
