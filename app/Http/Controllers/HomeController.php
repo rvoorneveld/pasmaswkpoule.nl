@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\UserScore;
 use Illuminate\Support\Facades\Auth;
 use App\Game;
 use App\Predictions;
@@ -33,7 +35,8 @@ class HomeController extends Controller
         return view('home', [
             'todaysGames' => Game::where('date', Carbon::today()->toDateString())->get()->all(),
             'upcommingGames' => Game::limit(5)->get(),
-            'showFillPredictionsAlert' => Predictions::where('userId', Auth::id())->count() !== Game::count(),
+            'showFillPredictionsAlert' => Predictions::where('userId', $userId = Auth::id())->count() !== Game::count(),
+            'lastPredictionsScore' => UserScore::where('userId', $userId)->orderBy('date', 'desc')->first(),
             'feed' => (new FeedReader())->read('https://www.voetbalkrant.com/nl/rss/nieuws/competities/wk-2018')->get_items(),
             'images' => $this->getRandomCarouselImages(),
         ]);

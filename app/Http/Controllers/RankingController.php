@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\UserScore as Ranking;
+
+use App\UserScore;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class RankingController extends Controller
 {
@@ -21,7 +24,22 @@ class RankingController extends Controller
      */
     public function index()
     {
-        return view('ranking', ['ranking' => Ranking::orderBy('points', 'desc')->get()]);
+        return view('ranking', [
+            'ranking' => UserScore::select([
+                DB::raw('SUM(points) as `total`'),
+                'users.name',
+            ])->join('users', 'users.id', '=', 'users_score.userId')
+            ->orderByRaw('total desc')
+            ->groupBy('users_score.userId', 'users.name')
+            ->get(),
+            'topten' => UserScore::select([
+                'users_score.points',
+                'users.name',
+            ])->join('users', 'users.id', '=', 'users_score.userId')
+            ->where('date', '=',
+                UserScore::select(['date',])->orderBy('date', 'desc')->first()->date ?? Carbon::now()->format('Y-m-d'))
+            ->orderBy('points', 'desc')->get(10),
+        ]);
     }
 
 }

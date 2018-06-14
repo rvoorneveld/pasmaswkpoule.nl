@@ -74,12 +74,9 @@ class RegisterController extends Controller
             'isAdmin' => 10,
         ]);
 
-        DB::table('users_score')->insert([
-            'userId' => $user->id,
-        ]);
-
         Mail::to($user)->send(new RegistrationComplete($user));
 
         return $user;
     }
+
 }

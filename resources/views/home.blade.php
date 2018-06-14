@@ -38,9 +38,11 @@
     <div class="alert alert-warning alert-important" role="alert">
         <a class="alert-link" href="/games">Vergeet niet om je voorspellingen in te vullen!</a>
     </div>
-@else
-    <div class="alert alert-success alert-important" role="alert">
-        Je hebt alle voorspellingen ingevuld!
+@endif
+@if (false === empty($lastPredictionsScore))
+    <div class="alert alert-primary alert-important" role="alert">
+        <h4 class="alert-heading">Jouw punten</h4>
+        <a class="alert-link" href="/ranking">Je hebt afgelopen ronde {{ $lastPredictionsScore->points ?? 0 }} punt(en) behaald!</a>
     </div>
 @endif
 <div class="row">

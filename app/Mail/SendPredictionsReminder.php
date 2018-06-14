@@ -31,7 +31,7 @@ class SendPredictionsReminder extends Mailable
      */
     public function build()
     {
-        return $this->subject('Vergeet uw voorspellingen niet in te vullen!')->markdown('emails.fill-predictions-reminder');
+        return $this->subject('Je hebt nog niet alle voorspellingen ingevuld!')->markdown('emails.fill-predictions-reminder');
     }
 
 }
