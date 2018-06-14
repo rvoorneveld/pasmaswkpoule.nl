@@ -90,7 +90,7 @@
                                                 {{ $disabled }}
                                             >
                                         </td>
-                                        @if (null !== $intPoints = $gamePrediction['points'])
+                                        @if (null !== $game->goalsHome && false === $date->isFuture())
                                             <td class="px-0 px-sm-1 px-md-2 px-lg-3">
                                                 <div>
                                                     <span class="badge badge-light">{{ $game->goalsHome }}</span>-<span class="badge badge-light">{{ $game->goalsAway }}</span>
@@ -102,7 +102,7 @@
                                             <td class="px-0 px-xs-1 px-sm-2 px-md-3">
                                                 <h2>
                                                     <span class="badge badge-light">
-                                                        {{ $intPoints }}
+                                                        {{ $intPoints ?? 0 }}
                                                     </span>
                                                 </h2>
                                             </td>

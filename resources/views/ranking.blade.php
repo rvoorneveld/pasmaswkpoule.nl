@@ -21,10 +21,10 @@
                             <td>
                                 @if ($intRank <= 6)
                                     <h{{ $intRank }}>
-                                        <span class="badge badge-light">{{ $rank->total }}</span>
+                                        <span class="badge badge-light">{{ $rank->total ?? 0 }}</span>
                                     </h{{ $intRank }}>
                                 @else
-                                    {{ $rank->total }}
+                                    {{ $rank->total ?? 0 }}
                                 @endif
                             </td>
                         </tr>
@@ -51,7 +51,7 @@
                         <tr>
                             <td>{{ $intRank = ($i + 1) }}</td>
                             <td>{{ $toptenrow->name }}</td>
-                            <td>{{ $toptenrow->points }}</td>
+                            <td>{{ $toptenrow->points ?? 0 }}</td>
                         </tr>
                     @endforeach
                     </tbody>

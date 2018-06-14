@@ -42,7 +42,7 @@
 @if (false === empty($lastPredictionsScore))
     <div class="alert alert-primary alert-important" role="alert">
         <h4 class="alert-heading">Jouw punten</h4>
-        Je hebt afgelopen ronde {{ $lastPredictionsScore->points }} punt(en) behaald!
+        <a class="alert-link" href="/ranking">Je hebt afgelopen ronde {{ $lastPredictionsScore->points ?? 0 }} punt(en) behaald!</a>
     </div>
 @endif
 <div class="row">
