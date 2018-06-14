@@ -16,6 +16,7 @@ class CreateUsersScoreTable extends Migration
         Schema::create('users_score', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userId')->index();
+            $table->date('date')->index();
             $table->integer('points')->nullable();
             $table->timestamps();
         });
