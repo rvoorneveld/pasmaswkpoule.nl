@@ -38,7 +38,7 @@ class RankingController extends Controller
             ])->join('users', 'users.id', '=', 'users_score.userId')
             ->where('date', '=',
                 UserScore::select(['date',])->orderBy('date', 'desc')->first()->date ?? Carbon::now()->format('Y-m-d'))
-            ->orderBy('points', 'desc')->get(10),
+            ->orderBy('points', 'desc')->limit(10)->get(),
         ]);
     }
 
