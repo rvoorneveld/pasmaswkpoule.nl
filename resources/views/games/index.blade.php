@@ -102,7 +102,7 @@
                                             <td class="px-0 px-xs-1 px-sm-2 px-md-3">
                                                 <h2>
                                                     <span class="badge badge-light">
-                                                        {{ $intPoints ?? 0 }}
+                                                        {{ $gamePrediction['points'] ?? 0 }}
                                                     </span>
                                                 </h2>
                                             </td>
