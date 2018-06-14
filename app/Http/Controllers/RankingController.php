@@ -29,8 +29,8 @@ class RankingController extends Controller
                 DB::raw('SUM(points) as `total`'),
                 'users.name',
             ])->join('users', 'users.id', '=', 'users_score.userId')
-            ->orderByRaw('total desc')
-            ->groupBy('users_score.userId', 'users.name')
+            ->groupBy('users_score.userId', 'users.id', 'users.name')
+            ->orderByRaw('total desc, users.id asc')
             ->get(),
             'topten' => UserScore::select([
                 'users_score.points',
@@ -38,7 +38,7 @@ class RankingController extends Controller
             ])->join('users', 'users.id', '=', 'users_score.userId')
             ->where('date', '=',
                 UserScore::select(['date',])->orderBy('date', 'desc')->first()->date ?? Carbon::now()->format('Y-m-d'))
-            ->orderBy('points', 'desc')->limit(10)->get(),
+                ->orderByRaw('points desc, users.id asc')->limit(10)->get(),
         ]);
     }
 

@@ -56,11 +56,21 @@
                         <td>{{ $carbon->setTimeFromTimeString("{$game->date} {$game->time}")->format('H:i') }}</td>
                         <td>
                             <img class="flag" src="/images/flags/{{$game->homeCountry->flag}}" /><br />
-                            {{ html_entity_decode($game->homeCountry->name) }}
+                            <div class="d-sm-none text-uppercase">{{ $game->homeCountry->code }}</div>
+                            <div class="d-none d-sm-block">{{ html_entity_decode($game->homeCountry->name) }}</div>
                         </td>
+                        @if (null !== ($intGoalsHome = $game->goalsHome) && null !== ($intGoalsAway = $game->goalsAway))
+                            <td>
+                                <h3 class="mt-1">
+                                    <span class="badge badge-light">{{ $intGoalsHome }}</span>
+                                    <span class="badge badge-light">{{ $intGoalsAway }}</span>
+                                </h3>
+                            </td>
+                        @endif
                         <td>
                             <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
-                            {{ html_entity_decode($game->awayCountry->name) }}
+                            <div class="d-sm-none text-uppercase">{{ $game->awayCountry->code }}</div>
+                            <div class="d-none d-sm-block">{{ html_entity_decode($game->awayCountry->name) }}</div>
                         </td>
                     </tr>
                 @endforeach
