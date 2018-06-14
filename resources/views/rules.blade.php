@@ -8,7 +8,7 @@
         <li>Volledige uitslag correct: 5 punten</li>
         <li>Uitslag thuis- of uitploeg correct: 2 punten</li>
         <li>Zowel rode als gele kaarten correct: 5 punten</li>
-        <li>Rode - of gele kaarten correct: 2 punten</li>
+        <li>Rode - of gele kaarten correct: 1 punt</li>
     </ul>
 
     <h2>Kosten</h2>
