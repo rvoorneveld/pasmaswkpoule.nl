@@ -33,7 +33,10 @@
                     </thead>
                     <tbody>
                     @foreach($games as $game)
-                        <tr>
+                        @php
+                        $strPointsRewardedClass = ($pointsRewarded = (20 === $game->pointsRewarded)) ? ' class=table-success' : '';
+                        @endphp
+                        <tr{{ $strPointsRewardedClass }}>
                             <td>
                                 @if(false === empty($types))
                                     <select
@@ -108,7 +111,7 @@
                                     type="text"
                                     class="form-control"
                                     value="{{ $game->goalsHome }}"
-                                    {{ $disabled = true === $game->inFuture ? ' disabled' : '' }}
+                                    {{ $disabled = (true === $game->inFuture || true === $pointsRewarded) ? ' disabled' : '' }}
                                     style="width:50px;"
                                 >
                             </td>
