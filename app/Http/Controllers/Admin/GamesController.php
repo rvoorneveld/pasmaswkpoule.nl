@@ -63,6 +63,7 @@ class GamesController extends Controller
 
     public function save(Request $request)
     {
+        $gameIds = [];
         foreach ($input = $request->all() as $gameId => $game) {
             if (false === is_numeric($gameId)) {
                 continue;
@@ -79,6 +80,8 @@ class GamesController extends Controller
                     ->withInput();
             }
 
+            $gameIds[] = $gameId;
+
             DB::table('games')
                 ->where('id', $gameId)
                 ->update(array_merge($game, ['pointsRewarded' => 20]));
@@ -86,9 +89,12 @@ class GamesController extends Controller
             Artisan::call('points:bygame', [
                 'gameId' => $gameId,
             ]);
+
         }
 
-        Artisan::call('points:total');
+        Artisan::call('points:total', [
+            'gameIds' => $gameIds,
+        ]);
 
         flash('Wedstijd(en) met succes opgeslagen')->success();
         return redirect('admin/games');
