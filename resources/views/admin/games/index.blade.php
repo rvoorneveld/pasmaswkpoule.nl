@@ -174,7 +174,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                Update scores: <input type="checkbox" name="updateScores" value="yes">
+                <div class="alert alert-danger alert-important" role="alert">
+                    LET OP! Wedstrijden worden vanaf nu altijd van scores voorzien. Je hoeft dit niet meer aan te vinken.
+                </div>
                 <input class="btn btn-primary" type="submit" name="submit" value="Opslaan">
             </fieldset>
         </form>
