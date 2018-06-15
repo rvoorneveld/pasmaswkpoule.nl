@@ -15,74 +15,6 @@
             </ul>
         </div>
     @endif
-    {{--<form method="post" name="saveGamesForm" action="/admin/games/store">--}}
-        {{--{{ csrf_field() }}--}}
-        {{--<fieldset>--}}
-            {{--<legend>Nieuwe wedstrijd toevoegen</legend>--}}
-            {{--<table class="table">--}}
-                {{--<thead>--}}
-                {{--<tr>--}}
-                    {{--<th>Type</th>--}}
-                    {{--<th>Stadion</th>--}}
-                    {{--<th>Datum</th>--}}
-                    {{--<th>Tijd</th>--}}
-                    {{--<th colspan="3">Wedstrijd</th>--}}
-                    {{--<th></th>--}}
-                {{--</tr>--}}
-                {{--</thead>--}}
-                {{--<tbody>--}}
-                    {{--<tr>--}}
-                        {{--<td>--}}
-                            {{--@if(false === empty($types))--}}
-                                {{--<select class="form-control" name="new[typeId]">--}}
-                                    {{--@foreach($types as $type)--}}
-                                        {{--<option value="{{ $type->id }}">{{ $type->name }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--@endif--}}
-                        {{--</td>--}}
-                        {{--<td>--}}
-                            {{--@if(false === empty($stadiums))--}}
-                                {{--<select class="form-control" name="new[stadiumId]">--}}
-                                    {{--@foreach($stadiums as $stadium)--}}
-                                        {{--<option value="{{ $stadium->id }}">{{ $stadium->name }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--@endif--}}
-                        {{--</td>--}}
-                        {{--<td>--}}
-                            {{--<input name="new[date]" type="text" class="form-control" value="" style="width:100px;">--}}
-                        {{--</td>--}}
-                        {{--<td>--}}
-                            {{--<input name="new[time]" type="text" class="form-control" value="" style="width:100px;">--}}
-                        {{--</td>--}}
-                        {{--<td>--}}
-                            {{--@if(false === empty($countries))--}}
-                                {{--<select class="form-control" name="new[homeId]">--}}
-                                    {{--@foreach($countries as $country)--}}
-                                        {{--<option value="{{ $country->id }}">{{ html_entity_decode($country->name) }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--@endif--}}
-                        {{--</td>--}}
-                        {{--<td>-</td>--}}
-                        {{--<td>--}}
-                            {{--@if(false === empty($countries))--}}
-                                {{--<select class="form-control" name="new[awayId]">--}}
-                                    {{--@foreach($countries as $country)--}}
-                                        {{--<option value="{{ $country->id }}">{{ html_entity_decode($country->name) }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--@endif--}}
-                        {{--</td>--}}
-                        {{--<td>--}}
-                            {{--<input class="btn btn-primary" type="submit" name="submit" value="Voeg toe">--}}
-                        {{--</td>--}}
-                    {{--</tr>--}}
-                {{--</tbody>--}}
-            {{--</table>--}}
-        {{--</fieldset>--}}
-    {{--</form>--}}
     @if (false === empty($games))
         <form method="post" name="saveGamesForm" action="/admin/games/save">
             {{ csrf_field() }}
@@ -101,7 +33,10 @@
                     </thead>
                     <tbody>
                     @foreach($games as $game)
-                        <tr>
+                        @php
+                        $strPointsRewardedClass = ($pointsRewarded = (20 === $game->pointsRewarded)) ? ' class=table-success' : '';
+                        @endphp
+                        <tr{{ $strPointsRewardedClass }}>
                             <td>
                                 @if(false === empty($types))
                                     <select
@@ -175,9 +110,8 @@
                                     name="{{ $game->id }}[goalsHome]"
                                     type="text"
                                     class="form-control"
-                                    placeholder="0"
                                     value="{{ $game->goalsHome }}"
-                                    {{ $disabled = true === $game->inFuture ? ' disabled' : '' }}
+                                    {{ $disabled = (true === $game->inFuture || true === $pointsRewarded) ? ' disabled' : '' }}
                                     style="width:50px;"
                                 >
                             </td>
@@ -187,7 +121,6 @@
                                     name="{{ $game->id }}[goalsAway]"
                                     type="text"
                                     class="form-control"
-                                    placeholder="0"
                                     value="{{ $game->goalsAway }}"
                                     {{ $disabled }}
                                     style="width:50px;"
@@ -241,7 +174,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                Update scores: <input type="checkbox" name="updateScores" value="yes">
+                <div class="alert alert-danger alert-important" role="alert">
+                    LET OP! Wedstrijden worden vanaf nu altijd van scores voorzien. Je hoeft dit niet meer aan te vinken.
+                </div>
                 <input class="btn btn-primary" type="submit" name="submit" value="Opslaan">
             </fieldset>
         </form>

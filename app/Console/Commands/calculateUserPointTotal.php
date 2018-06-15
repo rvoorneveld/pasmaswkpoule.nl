@@ -16,7 +16,7 @@ class calculateUserPointTotal extends Command
      *
      * @var string
      */
-    protected $signature = 'points:total';
+    protected $signature = 'points:total {gameIds*}';
 
     /**
      * The console command description.
@@ -42,6 +42,13 @@ class calculateUserPointTotal extends Command
      */
     public function handle()
     {
+        if (
+            true === empty($gameIds = $this->argument('gameIds') ?? null) ||
+            false === \is_array($gameIds)
+        ) {
+            return $this->error('No gameIds given to calculate total points for this round.');
+        }
+
         $date = Carbon::now()->format('Y-m-d');
         $predictions = Predictions::select([
             DB::raw('SUM(points) as total'),
@@ -49,8 +56,9 @@ class calculateUserPointTotal extends Command
             'users.name',
             'users.email',
         ])->join('users', 'users.id', '=', 'predictions.userId')
-          ->groupBy('predictions.userId', 'users.name', 'users.email', 'users.id')
-          ->get();
+        ->whereIn('predictions.gameId', $gameIds)
+        ->groupBy('predictions.userId', 'users.name', 'users.email', 'users.id')
+        ->get();
 
         foreach ($predictions as $userPoints) {
             DB::table('users_score')->insert([
@@ -64,4 +72,5 @@ class calculateUserPointTotal extends Command
             Mail::to($userPoints)->send(new TotalUserPointsCalculated($userPoints));
         }
     }
+
 }

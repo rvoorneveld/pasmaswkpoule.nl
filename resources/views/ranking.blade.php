@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                     @foreach($ranking as $i => $rank)
-                        <tr>
+                        <tr{{ $rank->id === $authUserId ? ' class=bg-warning' : '' }}>
                             <td>{{ $intRank = ($i + 1) }}</td>
                             <td>{{ $rank->name }}</td>
                             <td>
@@ -48,7 +48,7 @@
                     </thead>
                     <tbody>
                     @foreach($topten as $i => $toptenrow)
-                        <tr>
+                        <tr{{ $toptenrow->id === $authUserId ? ' class=bg-warning' : '' }}>
                             <td>{{ $intRank = ($i + 1) }}</td>
                             <td>{{ $toptenrow->name }}</td>
                             <td>{{ $toptenrow->points ?? 0 }}</td>

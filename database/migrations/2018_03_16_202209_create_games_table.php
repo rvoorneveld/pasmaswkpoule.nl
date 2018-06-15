@@ -26,6 +26,7 @@ class CreateGamesTable extends Migration
             $table->integer('goalsAway')->nullable();
             $table->integer('cardsYellow')->nullable();
             $table->integer('cardsRed')->nullable();
+            $table->tinyInteger('pointsRewarded')->default(10);
             $table->timestamps();
         });
     }

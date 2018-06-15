@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('reminder:predictions')->dailyAt('12:00');
+        $schedule->command('reminder:predictions')->dailyAt('10:00');
         $schedule->command('backup:clean')->dailyAt('21:00');
         $schedule->command('backup:run --only-db')->hourly();
     }

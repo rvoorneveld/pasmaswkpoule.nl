@@ -66,6 +66,8 @@
                                     <span class="badge badge-light">{{ $intGoalsAway }}</span>
                                 </h3>
                             </td>
+                        @else
+                            <td>&nbsp;</td>
                         @endif
                         <td>
                             <img class="flag" src="/images/flags/{{$game->awayCountry->flag}}" /><br />
