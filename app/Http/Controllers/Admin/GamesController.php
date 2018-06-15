@@ -81,7 +81,7 @@ class GamesController extends Controller
 
             DB::table('games')
                 ->where('id', $gameId)
-                ->update($game);
+                ->update(array_merge($game, ['pointsRewarded' => 20]));
             if (true === ($booUpdateScores = (isset($input['updateScores']) && 'yes' === $input['updateScores']))) {
                 Artisan::call('points:bygame', [
                     'gameId' => $gameId,
