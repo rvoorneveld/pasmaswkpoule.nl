@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'todaysGames' => Game::where('date', $date = Carbon::today()->toDateString())->get()->all(),
-            'upcommingGames' => Game::where('date', '>', $date)->orderBy('date', 'asc')->limit(5)->get(),
+            'upcommingGames' => Game::where('date', '>', $date)->orderBy('date', 'asc')->orderBy('time', 'asc')->limit(5)->get(),
             'showFillPredictionsAlert' => Predictions::where('userId', $userId = Auth::id())->count() !== Game::count(),
             'lastPredictionsScore' => UserScore::where('userId', $userId)->orderBy('date', 'desc')->first(),
             'feed' => (new FeedReader())->read('https://www.voetbalkrant.com/nl/rss/nieuws/competities/wk-2018')->get_items(),
