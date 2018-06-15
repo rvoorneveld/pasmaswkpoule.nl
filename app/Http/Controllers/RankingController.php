@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\UserScore;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RankingController extends Controller
 {
@@ -25,20 +26,23 @@ class RankingController extends Controller
     public function index()
     {
         return view('ranking', [
+            'authUserId' => Auth::user()->id,
             'ranking' => UserScore::select([
-                DB::raw('SUM(points) as `total`'),
-                'users.name',
-            ])->join('users', 'users.id', '=', 'users_score.userId')
-            ->groupBy('users_score.userId', 'users.id', 'users.name')
-            ->orderByRaw('total desc, users.id asc')
-            ->get(),
+                    DB::raw('SUM(points) as `total`'),
+                    'users.name',
+                    'users.id',
+                ])->join('users', 'users.id', '=', 'users_score.userId')
+                ->groupBy('users_score.userId', 'users.id', 'users.name')
+                ->orderByRaw('total desc, users.id asc')
+                ->get(),
             'topten' => UserScore::select([
-                'users_score.points',
-                'users.name',
-            ])->join('users', 'users.id', '=', 'users_score.userId')
-            ->where('date', '=',
-                UserScore::select(['date',])->orderBy('date', 'desc')->first()->date ?? Carbon::now()->format('Y-m-d'))
-                ->orderByRaw('points desc, users.id asc')->limit(10)->get(),
+                    'users_score.points',
+                    'users.name',
+                    'users.id',
+                ])->join('users', 'users.id', '=', 'users_score.userId')
+                ->where('date', '=',
+                    UserScore::select(['date',])->orderBy('date', 'desc')->first()->date ?? Carbon::now()->format('Y-m-d'))
+                    ->orderByRaw('points desc, users.id asc')->limit(10)->get(),
         ]);
     }
 
