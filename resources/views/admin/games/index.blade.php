@@ -107,7 +107,6 @@
                                     name="{{ $game->id }}[goalsHome]"
                                     type="text"
                                     class="form-control"
-                                    placeholder="0"
                                     value="{{ $game->goalsHome }}"
                                     {{ $disabled = true === $game->inFuture ? ' disabled' : '' }}
                                     style="width:50px;"
@@ -119,7 +118,6 @@
                                     name="{{ $game->id }}[goalsAway]"
                                     type="text"
                                     class="form-control"
-                                    placeholder="0"
                                     value="{{ $game->goalsAway }}"
                                     {{ $disabled }}
                                     style="width:50px;"
