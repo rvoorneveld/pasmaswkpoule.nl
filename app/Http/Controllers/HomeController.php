@@ -46,7 +46,7 @@ class HomeController extends Controller
     {
         if (false === empty($images = File::files("{$_SERVER['DOCUMENT_ROOT']}/images/carousel"))) {
             shuffle($images);
-            $images = array_slice($images, 0, $total);
+            $images = \array_slice($images, 0, $total);
         }
         return $images ?? [];
     }
