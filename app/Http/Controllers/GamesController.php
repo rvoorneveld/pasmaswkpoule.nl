@@ -52,8 +52,10 @@ class GamesController extends Controller
     {
         foreach ($input = $request->all() as $gameId => $gamePrediction) {
             if (false === is_numeric($gameId) ||
-                true === empty(array_filter($gamePrediction)) ||
-                true === $this->gameInPast($gameId)
+                true === $this->gameInPast($gameId) ||
+                true === empty(array_filter($gamePrediction, function($prediction){
+                    return null !== $prediction;
+                }))
             ) {
                 continue;
             }
