@@ -38,38 +38,6 @@
                         @endphp
                         <tr{{ $strPointsRewardedClass }}>
                             <td>
-                                @if(false === empty($types))
-                                    <select
-                                        class="form-control"
-                                        name="{{ $game->id }}[typeId]"
-                                        disabled
-                                    >
-                                        @foreach($types as $type)
-                                            <option
-                                                    value="{{ $type->id }}"
-                                                    {{{ ($game->typeId === $type->id) ? 'selected' : '' }}}
-                                            >{{ $type->name }}</option>
-                                        @endforeach
-                                    </select>
-                                @endif
-                            </td>
-                            <td>
-                                @if(false === empty($stadiums))
-                                    <select
-                                        class="form-control"
-                                        name="{{ $game->id }}[stadiumId]"
-                                        disabled
-                                    >
-                                        @foreach($stadiums as $stadium)
-                                            <option
-                                                value="{{ $stadium->id }}"
-                                                {{{ ($game->stadiumId === $stadium->id) ? 'selected' : '' }}}
-                                            >{{ $stadium->name }}</option>
-                                        @endforeach
-                                    </select>
-                                @endif
-                            </td>
-                            <td>
                                 <input
                                     name="{{ $game->id }}[date]"
                                     type="text"

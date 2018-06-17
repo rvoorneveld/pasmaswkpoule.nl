@@ -33,8 +33,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'todaysGames' => Game::where('date', $date = Carbon::today()->toDateString())->get()->all(),
-            'upcommingGames' => Game::where('date', '>', $date)->orderBy('date', 'asc')->orderBy('time', 'asc')->limit(5)->get(),
+            'todaysGames' => Game::where('date', $date = Carbon::today()->toDateString())->orderBy('time')->get()->all(),
+            'upcommingGames' => Game::where('date', '>', $date)->orderBy('date')->orderBy('time')->limit(5)->get(),
             'showFillPredictionsAlert' => Predictions::where('userId', $userId = Auth::id())->count() !== Game::count(),
             'lastPredictionsScore' => UserScore::where('userId', $userId)->orderBy('date', 'desc')->first(),
             'feed' => (new FeedReader())->read('https://www.voetbalkrant.com/nl/rss/nieuws/competities/wk-2018')->get_items(),
@@ -46,7 +46,7 @@ class HomeController extends Controller
     {
         if (false === empty($images = File::files("{$_SERVER['DOCUMENT_ROOT']}/images/carousel"))) {
             shuffle($images);
-            $images = array_slice($images, 0, $total);
+            $images = \array_slice($images, 0, $total);
         }
         return $images ?? [];
     }
