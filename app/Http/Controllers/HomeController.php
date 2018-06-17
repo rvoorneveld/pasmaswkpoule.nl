@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'todaysGames' => Game::where('date', $date = Carbon::today()->toDateString())->get()->all(),
+            'todaysGames' => Game::where('date', $date = Carbon::today()->toDateString())->orderBy('time', 'asc')->get()->all(),
             'upcommingGames' => Game::where('date', '>', $date)->orderBy('date', 'asc')->orderBy('time', 'asc')->limit(5)->get(),
             'showFillPredictionsAlert' => Predictions::where('userId', $userId = Auth::id())->count() !== Game::count(),
             'lastPredictionsScore' => UserScore::where('userId', $userId)->orderBy('date', 'desc')->first(),
