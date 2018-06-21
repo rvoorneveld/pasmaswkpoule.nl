@@ -31,7 +31,7 @@ class CountriesTableSeeder extends Seeder
             'hr' => ['Kroatië' => 'Croatia',],
             'ng' => ['Nigeria' => 'Nigeria',],
             'br' => ['Brazilië' => 'Brazil',],
-            'at' => ['Zwitserland' => 'Austria',],
+            'ch' => ['Zwitserland' => 'Switzerland',],
             'cr' => ['Costa Rica' => 'Costa-Rica',],
             'rs' => ['Servië' => 'Serbia',],
             'de' => ['Duitsland' => 'Germany',],
