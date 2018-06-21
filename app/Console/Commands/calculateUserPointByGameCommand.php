@@ -79,8 +79,8 @@ class calculateUserPointByGameCommand extends Command
                         $points += 2;
                         break;
                     case (
-                        $prediction->goalsHome === $game->goalsHome &&
-                        $prediction->goalsAway > $game->goalsAway
+                        $prediction->goalsHome === $prediction->goalsAway &&
+                        $game->goalsHome === $game->goalsAway
                     ):
                         $this->info("Awarded 2 points to {$userName}. Draw correct");
                         $points += 2;
