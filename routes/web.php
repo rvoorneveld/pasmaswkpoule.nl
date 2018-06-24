@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ranking', 'RankingController@index')->name('ranking');
 Route::get('/stadions', 'StadiumController@index')->name('stadium');
 Route::get('/spelregels', 'RulesController@index')->name('rules');
+Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::resource('games', 'GamesController');
 Route::post('/games/save', 'GamesController@save');
