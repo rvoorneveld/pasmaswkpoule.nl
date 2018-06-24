@@ -5,8 +5,9 @@
 
     <h2>Puntentelling:</h2>
     <ul>
-        <li>Volledige uitslag correct: 5 punten</li>
-        <li>Uitslag thuis- of uitploeg correct: 2 punten</li>
+        <li>Uitslag correct: 5 punten</li>
+        <li>Winnaar correct voorspeld: 2 punten</li>
+        <li>Gelijkspel correct voorspeld: 2 punten</li>
         <li>Zowel rode als gele kaarten correct: 5 punten</li>
         <li>Rode - of gele kaarten correct: 1 punt</li>
     </ul>
