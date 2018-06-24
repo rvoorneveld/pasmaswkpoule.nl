@@ -69,18 +69,14 @@
                             <li><a class="nav-link" href="{{ route('register') }}">Aanmelden</a></li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link nav-link--avatar dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="avatar">
-                                        <span class="avatar--inset avatar--initials">RV</span>
-                                            {{--<img class="avatar--img" src="//i.pravatar.cc/300">--}}
-                                    </span>
-                                    <span class="caret"></span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ $user->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/profile">
-                                        Profiel
-                                    </a>
+                                    {{--<a class="dropdown-item" href="/profile">--}}
+                                        {{--Profiel--}}
+                                    {{--</a>--}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

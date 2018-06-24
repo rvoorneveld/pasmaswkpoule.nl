@@ -8,11 +8,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// UI
-@import 'ui/avatar';
-@import 'ui/carousel';
+// Custom
 @import 'ui/flag';
 @import 'ui/form';
+@import 'ui/carousel';
 
 .navbar-laravel {
   background-color: #fff;
