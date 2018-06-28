@@ -12,20 +12,33 @@
         Uitslag thuis, uitslag uit, gele kaarten en rode kaarten.
     </div>
 
-    @if (false === empty($gamesByPoule))
+    @if (false === empty($gamesByTypeAndPoule))
         <form class="form-inline" method="post" name="saveGamesForm" action="/games/save">
             {{ csrf_field() }}
             <div class="row">
-                @foreach($gamesByPoule as $poule => $games)
-                    <div class="col-lg-12 col-xl-6 text-center px-0 px-md-3">
-                        <h2 class="mt-4">Poule {{ $poule }}</h2>
-                        @if (false === empty($games))
-                            <table class="table table-borderless table-striped">
-                                <tbody>
-                                @foreach ($games as $game)
+                @foreach($gamesByTypeAndPoule as $typeId => $gamesByType)
+                    <div class="col-12 text-center">
+                        <h1 class="mt-4">
+                            {{ $types[$typeId] ?? '{types.name}' }}
+                        </h1>
+                    </div>
+                    @if (false === empty($gamesByType))
+                        @foreach ($gamesByType as $poule => $gamesByPoule)
+                            @php
+                               $isFirstRound = (1 === $typeId);
+                            @endphp
+                            <div class="col-lg-12 col-xl-6 text-center px-0 px-md-3 {{{ false === $isFirstRound ? 'offset-md-3' : '' }}}">
+                            @if ($isFirstRound = (1 === $typeId))
+                                <h3 class="mt-4">Poule {{ $poule }}</h3>
+                            @endif
+                            @if (false === empty($gamesByPoule))
+                                <table class="table table-borderless table-striped">
+                                    <tbody>
+                                @foreach ($gamesByPoule as $game)
+
                                     @php
                                         $date = $carbon->setTimeFromTimeString("{$game->date} {$game->time}");
-                                        $disabled = false === $date->isFuture() ? ' disabled' : '';
+                                        $disabled = (false === $date->isFuture() || 33 === $game->homeId || 33 === $game->awayId) ? ' disabled' : '';
                                         $gamePrediction = $userPredictions[$game->id] ?? false;
                                         $goalsHome = $gamePrediction['goalsHome'] ?? '';
                                         $goalsAway = $gamePrediction['goalsAway'] ?? '';
@@ -51,20 +64,20 @@
                                         </td>
                                         <td class="px-0">
                                             <input
-                                                maxlength="1"
-                                                name="{{$game->id}}[goalsHome]"
-                                                type="text"
-                                                class="form-control form-control--score"
-                                                value="{{ $goalsHome }}"{{ $disabled }}
+                                                    maxlength="1"
+                                                    name="{{$game->id}}[goalsHome]"
+                                                    type="text"
+                                                    class="form-control form-control--score"
+                                                    value="{{ $goalsHome }}"{{ $disabled }}
                                             >
                                             -
                                             <input
-                                                maxlength="1"
-                                                name="{{$game->id}}[goalsAway]"
-                                                type="text"
-                                                class="form-control form-control--score"
-                                                value="{{ $goalsAway }}"
-                                                {{ $disabled }}
+                                                    maxlength="1"
+                                                    name="{{$game->id}}[goalsAway]"
+                                                    type="text"
+                                                    class="form-control form-control--score"
+                                                    value="{{ $goalsAway }}"
+                                                    {{ $disabled }}
                                             >
                                         </td>
                                         <td class="px-0 px-sm-1 px-md-2 px-lg-3">
@@ -74,20 +87,20 @@
                                         </td>
                                         <td class="px-0">
                                             <input
-                                                maxlength="1"
-                                                name="{{$game->id}}[cardsYellow]"
-                                                type="text"
-                                                class="form-control form-control--score form-control--card-yellow"
-                                                value="{{ $cardsYellow }}"
-                                                {{ $disabled }}
+                                                    maxlength="1"
+                                                    name="{{$game->id}}[cardsYellow]"
+                                                    type="text"
+                                                    class="form-control form-control--score form-control--card-yellow"
+                                                    value="{{ $cardsYellow }}"
+                                                    {{ $disabled }}
                                             >
                                             <input
-                                                maxlength="1"
-                                                name="{{$game->id}}[cardsRed]"
-                                                type="text"
-                                                class="form-control form-control--score form-control--card-red"
-                                                value="{{ $cardsRed }}"
-                                                {{ $disabled }}
+                                                    maxlength="1"
+                                                    name="{{$game->id}}[cardsRed]"
+                                                    type="text"
+                                                    class="form-control form-control--score form-control--card-red"
+                                                    value="{{ $cardsRed }}"
+                                                    {{ $disabled }}
                                             >
                                         </td>
                                         @if (null !== $game->goalsHome && false === $date->isFuture())
@@ -101,9 +114,9 @@
                                             </td>
                                             <td class="px-0 px-xs-1 px-sm-2 px-md-3">
                                                 <h2>
-                                                    <span class="badge badge-light">
-                                                        {{ $gamePrediction['points'] ?? 0 }}
-                                                    </span>
+                                        <span class="badge badge-light">
+                                            {{ $gamePrediction['points'] ?? 0 }}
+                                        </span>
                                                 </h2>
                                             </td>
                                         @else
@@ -111,15 +124,17 @@
                                         @endif
                                     </tr>
                                 @endforeach
-                                <tr>
-                                    <td colspan="7" class="bg-light">
-                                        <input class="btn btn-primary" type="submit" name="submit" value="Opslaan">
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        @endif
-                    </div>
+                                    <tr>
+                                        <td colspan="7" class="bg-light">
+                                            <input class="btn btn-primary" type="submit" name="submit" value="Opslaan">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            @endif
+                            </div>
+                        @endforeach
+                    @endif
                 @endforeach
             </div>
         </form>

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Country;
 use App\Game;
+use App\Gametypes;
 use App\Predictions;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -31,9 +30,8 @@ class GamesController extends Controller
     public function index()
     {
         return view('games.index', [
-            'gamesByPoule' => Game::all()->groupBy(function ($game) {
-                return $game->poule;
-            }),
+            'gamesByTypeAndPoule' => $this->getGamesByTypeAndPoule(),
+            'types' => Gametypes::all()->pluck('name', 'id'),
             'userPredictions' => $this->getUserPredictions(),
         ]);
     }
@@ -150,6 +148,15 @@ class GamesController extends Controller
     private function gameInPast(int $id): bool
     {
         return (new Carbon())->setTimeFromTimeString(($game = Game::find($id))->date.' '.$game->time)->isPast();
+    }
+
+    private function getGamesByTypeAndPoule(): array
+    {
+        $games = [];
+        foreach (Game::where('id', '>', 0)->orderByRaw('typeId DESC, poule, date, time')->get() ?? [] as $game) {
+            $games[$game['typeId']][$game['poule']][] = $game;
+        }
+        return $games;
     }
 
 }
