@@ -11,6 +11,9 @@
         Let op: Wanneer je een wedstrijd wilt opslaan dien je alle 4 de velden in te vulen.<br />
         Uitslag thuis, uitslag uit, gele kaarten en rode kaarten.
     </div>
+    <div class="alert alert-primary alert-important" role="alert">
+        LET OP: de uitslag die je invult geldt voor de <strong>reguliere wedstrijd van 90 minuten</strong>.
+    </div>
 
     @if (false === empty($gamesByTypeAndPoule))
         <form class="form-inline" method="post" name="saveGamesForm" action="/games/save">
