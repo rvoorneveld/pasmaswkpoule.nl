@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\RulesInKnockOutPhase;
+use App\Mail\PaymentReminder;
 use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
